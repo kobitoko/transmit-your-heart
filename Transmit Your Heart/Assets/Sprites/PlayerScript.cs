@@ -19,6 +19,7 @@ public class PlayerScript : MonoBehaviour {
     }
     public void Update()
     {
+        
         float v = Input.GetAxis("Vertical");
         float h = Input.GetAxis("Horizontal");
         Vector3 newPosition = this.gameObject.GetComponent<Transform>().position;
