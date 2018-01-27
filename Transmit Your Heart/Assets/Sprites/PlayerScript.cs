@@ -19,8 +19,8 @@ public class PlayerScript : MonoBehaviour {
     }
     public void Update()
     {
-        float v = Input.GetAxisRaw("Vertical");
-        float h = Input.GetAxisRaw("Horizontal");
+        float v = Input.GetAxis("Vertical");
+        float h = Input.GetAxis("Horizontal");
         Vector3 newPosition = this.gameObject.GetComponent<Transform>().position;
         newPosition.x += h * speed * Time.deltaTime;
         newPosition.y += v * speed * Time.deltaTime;
