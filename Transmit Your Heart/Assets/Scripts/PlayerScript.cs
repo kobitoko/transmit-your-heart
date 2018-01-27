@@ -42,13 +42,16 @@ public class PlayerScript : MonoBehaviour {
     public void Update()
     {
         Vector2 inputMovement = tileDetect(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
+        inputMovement = Vector3.Normalize(inputMovement);
         Vector3 newPosition = this.gameObject.GetComponent<Transform>().position;
         newPosition.x += inputMovement.x * speed * Time.deltaTime;
         newPosition.y += inputMovement.y * speed * Time.deltaTime;
         this.gameObject.GetComponent<Transform>().position = newPosition;
     }
 
-    // Checks if there is a tile ahead of the movement and disables movement if there is.
+    /**
+     * Checks if there is a tile ahead of the movement and disables movement if there is.
+     */
     Vector2 tileDetect(Vector2 movement)
     {
         float x = movement.x;
@@ -59,11 +62,13 @@ public class PlayerScript : MonoBehaviour {
             return Vector2.zero;
         }
         Vector2 currentDirection = new Vector2(x, y);
-        float dist = 0.3f;
+        float radius = gameObject.GetComponent<CircleCollider2D>().radius;
+        // Always slightly bigger than the collider.
+        float dist = radius + 0.1f;
         // Diagonal is a bit further away since it is not directly at the character.
         if (!Mathf.Approximately(x, 0f) && !Mathf.Approximately(y, 0))
         {
-            dist = 0.6f;
+            dist = radius*1.5f + 0.1f;
         }
         // Test for a solid tile in that direction.
         RaycastHit2D hit = Physics2D.Raycast(transform.position, currentDirection, dist);
