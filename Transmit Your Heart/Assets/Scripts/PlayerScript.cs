@@ -51,6 +51,7 @@ public class PlayerScript : MonoBehaviour {
 
     /**
      * Checks if there is a tile ahead of the movement and disables movement if there is.
+     * Also disables movement to outside the camera.
      */
     Vector2 tileDetect(Vector2 movement)
     {
@@ -70,10 +71,15 @@ public class PlayerScript : MonoBehaviour {
         {
             dist = radius*1.5f + 0.1f;
         }
+        // Test for being outside the camera
+        if (!inCameraBounds(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y) + (currentDirection * radius)))
+        {
+            return Vector2.zero;
+        }
         // Test for a solid tile in that direction.
         RaycastHit2D hit = Physics2D.Raycast(transform.position, currentDirection, dist);
         #if (UNITY_EDITOR)
-            Debug.DrawRay(transform.position, currentDirection, Color.red);
+        Debug.DrawRay(transform.position, currentDirection, Color.red);
         #endif
         // A solid tile was found, don't allow movement to that direction.
         if (hit.collider != null && hit.collider.GetComponent<TilemapCollider2D>() != null) {
@@ -81,5 +87,22 @@ public class PlayerScript : MonoBehaviour {
         }
         // if nothing found return original movement.
         return movement;
+    }
+
+    // Checks if given point is within the camera.
+    bool inCameraBounds(Vector2 position)
+    {
+        Vector3 cameraPosition = Camera.main.transform.position;
+        float aspect = Camera.main.GetComponent<Camera>().aspect;
+        float halfHeight = Camera.main.GetComponent<Camera>().orthographicSize;
+        float halfWidth = aspect * halfHeight;
+        if( position.x > (cameraPosition.x + halfWidth) ||
+            position.x < (cameraPosition.x - halfWidth) ||
+            position.y > (cameraPosition.y + halfHeight) ||
+            position.y < (cameraPosition.y - halfHeight))
+        {
+            return false;
+        }
+        return true;
     }
 }
