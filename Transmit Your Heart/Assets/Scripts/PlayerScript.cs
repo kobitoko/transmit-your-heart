@@ -74,6 +74,13 @@ public class PlayerScript : MonoBehaviour
                 }
             }
         }
+#if (UNITY_EDITOR)
+        // Test next level
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            notesPlay.setCurrentSong(notesPlay.getCurrentSong() + 1);
+        }
+#endif
     }
 
     /**
