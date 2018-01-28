@@ -26,15 +26,8 @@ public class BestFriends : MonoBehaviour {
                 gameObject.GetComponent<SonarPingScript>().changePingSize(Random.Range(0.8f, 1.3f));
             }
         }
-    }
-
-    IEnumerator findBestFriend()
-    {
-        yield return new WaitForSeconds(15);
-        readyGo = true;
-    }
-
-    // Visually puts friend infront of player if player is further up in the depth level Y.
+        // Visually puts friend infront of player if player is further up in the depth level Y.
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (player.transform.position.y + player.GetComponent<CircleCollider2D>().offset.y > transform.position.y)
         {
             gameObject.GetComponent<SpriteRenderer>().sortingOrder = 11;
@@ -43,5 +36,12 @@ public class BestFriends : MonoBehaviour {
         {
             gameObject.GetComponent<SpriteRenderer>().sortingOrder = 9;
         }
+    }
+
+    IEnumerator findBestFriend()
+    {
+        yield return new WaitForSeconds(15);
+        readyGo = true;
+    }
 
 }
