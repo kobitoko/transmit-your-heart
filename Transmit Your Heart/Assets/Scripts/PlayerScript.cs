@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-public class PlayerScript : MonoBehaviour {
+public class PlayerScript : MonoBehaviour
+{
     public float walkSpeed = 5;
     public GameObject closestFriendPart = null;
+    public List<KeyItem> inventory = new List<KeyItem>();
 
     float originalSpeed;
     Vector3Int position;
     GridScript gridScript;
-    
+
 
     public void Start()
     {
@@ -23,7 +25,7 @@ public class PlayerScript : MonoBehaviour {
     public void setSpeed(int newSpeed)
     {
         // Special case, -1 means reset speed.
-        if(newSpeed == -1)
+        if (newSpeed == -1)
         {
             walkSpeed = originalSpeed;
             return;
@@ -52,10 +54,19 @@ public class PlayerScript : MonoBehaviour {
         newPosition.y += inputMovement.y * walkSpeed * Time.deltaTime;
         this.gameObject.GetComponent<Transform>().position = newPosition;
         // Action
-        if(Input.GetButtonDown("Action") && closestFriendPart != null)
+        if (Input.GetButtonDown("Action") && closestFriendPart != null)
         {
             Debug.Log("HELLO FREND " + closestFriendPart.name);
+            // Rythm game sequence here.
+            StartCoroutine(pickupItemGame());
         }
+    }
+
+    IEnumerator pickupItemGame()
+    {
+        yield return new WaitUntil(() => true);
+        inventory.Add(closestFriendPart.GetComponent<InteractableScript>().giveItem());
+        Destroy(closestFriendPart);
     }
 
     /**
@@ -67,7 +78,7 @@ public class PlayerScript : MonoBehaviour {
         float x = movement.x;
         float y = movement.y;
         // If no movement, nothing happens.
-        if(Mathf.Approximately(x, 0f) && Mathf.Approximately(y,0))
+        if (Mathf.Approximately(x, 0f) && Mathf.Approximately(y, 0))
         {
             return Vector2.zero;
         }
@@ -78,7 +89,7 @@ public class PlayerScript : MonoBehaviour {
         // Diagonal is a bit further away since it is not directly at the character.
         if (!Mathf.Approximately(x, 0f) && !Mathf.Approximately(y, 0))
         {
-            dist = radius*1.5f + 0.1f;
+            dist = radius * 1.5f + 0.1f;
         }
         // Test for being outside the camera
         if (!inCameraBounds(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y) + (currentDirection * radius)))
@@ -90,11 +101,12 @@ public class PlayerScript : MonoBehaviour {
         Vector2 playerPosition = transform.position;
         // Test for a solid tile in that direction.
         RaycastHit2D hit = Physics2D.Raycast(colliderPosition + playerPosition, currentDirection, dist);
-        #if (UNITY_EDITOR)
+#if (UNITY_EDITOR)
         Debug.DrawRay(transform.position, currentDirection, Color.red);
-        #endif
+#endif
         // A solid tile was found, don't allow movement to that direction.
-        if (hit.collider != null && hit.collider.GetComponent<TilemapCollider2D>() != null) {
+        if (hit.collider != null && hit.collider.GetComponent<TilemapCollider2D>() != null)
+        {
             return Vector2.zero;
         }
         // if nothing found return original movement.
@@ -108,7 +120,7 @@ public class PlayerScript : MonoBehaviour {
         float aspect = Camera.main.GetComponent<Camera>().aspect;
         float halfHeight = Camera.main.GetComponent<Camera>().orthographicSize;
         float halfWidth = aspect * halfHeight;
-        if( position.x > (cameraPosition.x + halfWidth) ||
+        if (position.x > (cameraPosition.x + halfWidth) ||
             position.x < (cameraPosition.x - halfWidth) ||
             position.y > (cameraPosition.y + halfHeight) ||
             position.y < (cameraPosition.y - halfHeight))

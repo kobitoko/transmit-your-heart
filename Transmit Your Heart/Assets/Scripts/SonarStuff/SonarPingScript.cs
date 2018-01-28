@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SonarPingScript : MonoBehaviour {
+public class SonarPingScript : MonoBehaviour
+{
 
     public GameObject sonarPrefab;
     public int pingCircles = 5;
@@ -16,8 +17,9 @@ public class SonarPingScript : MonoBehaviour {
     Vector2 pingLocation;
     bool playedOnce = false;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         sonarPings.Clear();
         for (int i = 0; i < pingCircles; ++i)
         {
@@ -26,13 +28,26 @@ public class SonarPingScript : MonoBehaviour {
             toAdd.GetComponent<SonarWave>().speed = pingSpeed;
             toAdd.GetComponent<SpriteRenderer>().color = pingColor;
             sonarPings.Add(toAdd);
-            
         }
-	}
+    }
+
+    private void Update()
+    {
+#if (UNITY_EDITOR)
+        // Allows to edit these settings in the Inspector and see the results immediately.
+        foreach (GameObject sonar in sonarPings)
+        {
+            sonar.GetComponent<SonarWave>().biggestSize = pingSize;
+            sonar.GetComponent<SonarWave>().speed = pingSpeed;
+            sonar.GetComponent<SpriteRenderer>().color = pingColor;
+        }
+#endif
+    }
 
     public void playPing()
     {
-        if(playedOnce == true) {
+        if (playedOnce == true)
+        {
             return;
         }
         playedOnce = true;
@@ -47,7 +62,7 @@ public class SonarPingScript : MonoBehaviour {
             sonar.GetComponent<Transform>().position = pingLocation;
             sonar.GetComponent<SonarWave>().play();
             yield return new WaitForSeconds(betweenWavesTimeSeconds);
-            
+
         }
         yield return new WaitWhile(() => sonarPings[sonarPings.Count - 1].GetComponent<SonarWave>().playing);
         playedOnce = false;
