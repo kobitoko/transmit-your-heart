@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 23172434624546956}
   m_Layer: 0
   m_Name: npcNote
-  m_TagString: Note
+  m_TagString: npcNote
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

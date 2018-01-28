@@ -28,7 +28,6 @@ public class PlayNotes : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         notes = GetComponents<AudioSource>();
-        InvokeRepeating("DestroyNotes", 0.0f, 5.0f);
     }
 	
 	// Update is called once per frame
@@ -77,12 +76,16 @@ public class PlayNotes : MonoBehaviour {
     void DisplayNote(Vector3 position) {
         if (notesPlayed < 15) {
             Instantiate(note, position, Quaternion.identity);
+            if(notesPlayed == 0) {
+                StartCoroutine(DestroyNotes());
+            }
             noteClones = GameObject.FindGameObjectsWithTag("Note");
             notesPlayed++;
         }
     }
 
-    void DestroyNotes() {
+    IEnumerator DestroyNotes() {
+        yield return new WaitForSeconds(7);
         for(int i = 0; i < notesPlayed; i++) {
             Destroy(noteClones[i]);
         }
