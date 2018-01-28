@@ -46,12 +46,34 @@ public class PlayNotes : MonoBehaviour {
     void Update() {
         if(SceneManager.GetActiveScene().name == "Level1") {
             if(npc.GetComponent<tvNotes>().currentSong == 0) {
-                RadioSong_1Controls();
+                TVSong_1Controls();
+            }else if(npc.GetComponent<tvNotes>().currentSong == 1) {
+                TVSong_2Controls();
+            }
+            else if(npc.GetComponent<tvNotes>().currentSong == 2) {
+                TVSong_3Controls();
             }
         }else if(SceneManager.GetActiveScene().name == "Level2") {
-            TVSong_1Controls();
-        }else if(SceneManager.GetActiveScene().name == "Level3") {
-            SatelliteSong_1Controls();
+            if (npc.GetComponent<tvNotes>().currentSong == 0) {
+                RadioSong_1Controls();
+            }
+            else if (npc.GetComponent<tvNotes>().currentSong == 1) {
+                RadioSong_2Controls();
+            }
+            else if (npc.GetComponent<tvNotes>().currentSong == 2) {
+                RadioSong_3Controls();
+            }
+        }
+        else if(SceneManager.GetActiveScene().name == "Level3") {
+            if (npc.GetComponent<tvNotes>().currentSong == 0) {
+                SatelliteSong_1Controls();
+            }
+            else if (npc.GetComponent<tvNotes>().currentSong == 1) {
+                SatelliteSong_2Controls();
+            }
+            else if (npc.GetComponent<tvNotes>().currentSong == 2) {
+                SatelliteSong_3Controls();
+            }
         }
     }
 
