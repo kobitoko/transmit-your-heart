@@ -13,7 +13,8 @@ using UnityEngine;
 
 //Ignore last 5 notes of song_1
 
-public class tvNotes : MonoBehaviour {
+public class tvNotes : MonoBehaviour, NotesInterface
+{
     public List<float> song_1 = new List<float> { -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f }; //15
     public List<float> song_2 = new List<float> { -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f }; //9
     public List<float> song_3 = new List<float> { -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f }; //14
@@ -43,6 +44,21 @@ public class tvNotes : MonoBehaviour {
         if (canPlay == true && Input.GetKeyDown("space")) {
             playSong();
         }
+    }
+
+    public bool canPlaySong()
+    {
+        return canPlay;
+    }
+
+    public void setCanPlaySong(bool canIndeed)
+    {
+        canPlay = canIndeed;
+    }
+
+    public int getCurrentSong()
+    {
+        return currentSong;
     }
 
     public void playSong()

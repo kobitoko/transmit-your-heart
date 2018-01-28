@@ -13,7 +13,8 @@ using UnityEngine;
 
 
 
-public class radioNotes : MonoBehaviour {
+public class radioNotes : MonoBehaviour, NotesInterface
+{
     public List<float> song_1 = new List<float> { -1.095f, -2.395f, -1.745f, -1.095f, -0.12f, -0.445f, -0.77f, -1.095f };
     public List<float> song_2 = new List<float> { -0.77f, -1.095f, -1.42f, -1.095f, -2.395f, -2.07f };
     public List<float> song_3 = new List<float> { -3.045f, -2.72f, -2.395f, -1.42f, -1.745f, -2.395f };
@@ -41,6 +42,21 @@ public class radioNotes : MonoBehaviour {
             playSong();
         } 
 	}
+
+    public bool canPlaySong()
+    {
+        return canPlay;
+    }
+
+    public void setCanPlaySong(bool canIndeed)
+    {
+        canPlay = canIndeed;
+    }
+
+    public int getCurrentSong()
+    {
+        return currentSong;
+    }
 
     public void playSong()
     {

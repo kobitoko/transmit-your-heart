@@ -13,7 +13,8 @@ using UnityEngine;
 
 
 
-public class satelliteNotes : MonoBehaviour {
+public class satelliteNotes : MonoBehaviour, NotesInterface
+{
     public List<float> song_1 = new List<float> { -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f };//8
     public List<float> song_2 = new List<float> { -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f };//12
     public List<float> song_3 = new List<float> { -2.395f, -2.395f, -2.395f };//3
@@ -41,6 +42,21 @@ public class satelliteNotes : MonoBehaviour {
         if (canPlay == true && Input.GetKeyDown("space")) {
             playSong();
         }
+    }
+
+    public bool canPlaySong()
+    {
+        return canPlay;
+    }
+
+    public void setCanPlaySong(bool canIndeed)
+    {
+        canPlay = canIndeed;
+    }
+
+    public int getCurrentSong()
+    {
+        return currentSong;
     }
 
     public void playSong()

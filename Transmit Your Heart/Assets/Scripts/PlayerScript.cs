@@ -14,12 +14,12 @@ public class PlayerScript : MonoBehaviour
     GridScript gridScript;
     GameObject staffNotes;
 
-
     public void Start()
     {
         staffNotes = GameObject.FindGameObjectWithTag("staff");
         originalSpeed = walkSpeed;
         staffNotes.SetActive(false);
+
     }
 
     /**
@@ -70,18 +70,26 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    NotesInterface beginRythmGame(bool begin)
+    {
+        NotesInterface notesPlay = GameObject.FindGameObjectWithTag("npc").GetComponent<NotesInterface>();
+        staffNotes.SetActive(begin);
+        if (begin == true)
+        {
+            notesPlay.playSong();
+        }
+        notesPlay.setCanPlaySong(begin);
+        return notesPlay;
+    }
+
     // Picking up the items for the friendo
     IEnumerator pickupItemGame()
     {
         // When the currentLevel increases in the music game it means they completed it.
-        staffNotes.SetActive(true);
-        tvNotes tv = GameObject.FindGameObjectWithTag("npc").GetComponent<tvNotes>();
-        tv.playSong();
-        tv.canPlay = true;
-        int before = tv.currentSong;
-        yield return new WaitUntil(() => before + 1 == tv.currentSong);
-        staffNotes.SetActive(false);
-        tv.canPlay = false;
+        NotesInterface notesPlay = beginRythmGame(true);
+        int before = notesPlay.getCurrentSong();
+        yield return new WaitUntil(() => (before + 1) == notesPlay.getCurrentSong());
+        beginRythmGame(false);
         inventory += 1;
         Destroy(closestFriendPart); // Sad ;-; it gone.
     }
@@ -90,10 +98,10 @@ public class PlayerScript : MonoBehaviour
     IEnumerator fixFriend()
     {
         // CurrentLevel = 4 <- magic number for the music game. 4 = finish npc.
-        staffNotes.SetActive(true);
+        beginRythmGame(true);
         yield return new WaitUntil(() => true);
         Debug.Log("For fixing me, THANK FRIEND!");
-        staffNotes.SetActive(false);
+        beginRythmGame(false);
     }
 
     /**
