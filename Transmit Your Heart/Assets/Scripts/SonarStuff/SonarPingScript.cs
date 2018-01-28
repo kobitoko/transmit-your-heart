@@ -33,42 +33,41 @@ public class SonarPingScript : MonoBehaviour
 
     private void Update()
     {
-#if (UNITY_EDITOR)
-        // Allows to edit these settings in the Inspector and see the results immediately.
-        foreach (GameObject sonar in sonarPings)
-        {
-            sonar.GetComponent<SonarWave>().biggestSize = pingSize;
-            sonar.GetComponent<SonarWave>().speed = pingSpeed;
-            sonar.GetComponent<SpriteRenderer>().color = pingColor;
-        }
-#endif
     }
 
     public void changePingSpeed(float pingVelocity)
     {
         pingSpeed = pingVelocity;
-        foreach (GameObject sonar in sonarPings)
-        {
-            sonar.GetComponent<SonarWave>().speed = pingSpeed;
-        }
+        updateSonarWaves();
     }
 
     public void changePingSize(float size)
     {
         pingSize = size;
-        foreach (GameObject sonar in sonarPings)
-        {
-            sonar.GetComponent<SonarWave>().biggestSize = pingSize;
-        }
+        updateSonarWaves();
     }
 
     public void changePingColor(Color color)
     {
         pingColor = color;
+        updateSonarWaves();
+    }
+
+    void updateSonarWaves()
+    {
         foreach (GameObject sonar in sonarPings)
         {
-            sonar.GetComponent<SpriteRenderer>().color = color;
+            StartCoroutine(setWhenDone(sonar));
+
         }
+    }
+
+    IEnumerator setWhenDone(GameObject sonar)
+    {
+        yield return new WaitUntil(() => sonar.GetComponent<SonarWave>().playing == false);
+        sonar.GetComponent<SpriteRenderer>().color = pingColor;
+        sonar.GetComponent<SonarWave>().biggestSize = pingSize;
+        sonar.GetComponent<SonarWave>().speed = pingSpeed;
     }
 
     public void playPing()

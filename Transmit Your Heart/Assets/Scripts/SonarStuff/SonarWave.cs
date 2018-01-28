@@ -19,19 +19,23 @@ public class SonarWave : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(playing == false)
+        if (playing == true)
         {
-            setScale(0.1f, gameObject);
-            setObjectAlpha(0, gameObject);
-        } else if (playing == true) {
-            if(gameObject.GetComponent<Transform>().localScale.x < biggestSize)
+            if (gameObject.GetComponent<Transform>().localScale.x < biggestSize)
             {
                 setScale(gameObject.GetComponent<Transform>().localScale.x + (speed * Time.deltaTime), gameObject);
                 float progress = gameObject.GetComponent<Transform>().localScale.x / biggestSize;
-                setObjectAlpha((1-(progress-0.5f)), gameObject);
-            } else {
+                setObjectAlpha((1 - (progress - 0.5f)), gameObject);
+            }
+            else
+            {
                 playing = false;
             }
+        }
+        if (playing == false)
+        {
+            setScale(0.1f, gameObject);
+            setObjectAlpha(0, gameObject);
         }
     }
 
