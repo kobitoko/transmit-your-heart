@@ -176,8 +176,12 @@ public class PlayerScript : MonoBehaviour
         float halfWidth = aspect * halfHeight;
         if (position.x > (cameraPosition.x + halfWidth) ||
             position.x < (cameraPosition.x - halfWidth) ||
-            position.y > (cameraPosition.y + halfHeight) ||
             position.y < (cameraPosition.y - halfHeight))
+        {
+            return false;
+        }
+        // Allow up outside camera movement for after finishing.
+        if (notesPlay.getCurrentSong() <= 3 && position.y > (cameraPosition.y + halfHeight))
         {
             return false;
         }
