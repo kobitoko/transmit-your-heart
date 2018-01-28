@@ -46,6 +46,7 @@ public class tvNotes : MonoBehaviour, NotesInterface
     public int currentSong = 0;
     public float xOffset = -7.4f;
     public float xScale = 0.9f;
+    
     // Use this for initialization
     void Start() {
         songs = GetComponents<AudioSource>();
@@ -54,9 +55,6 @@ public class tvNotes : MonoBehaviour, NotesInterface
     // Update is called once per frame
     void Update() {
         if (canPlay == true && Input.GetKeyDown("space")) {
-
-
-            DestroyNotes();
             playSong();
         }
     }
@@ -88,14 +86,17 @@ public class tvNotes : MonoBehaviour, NotesInterface
             songs[currentSong].Play();
             if (currentSong == 0)
             {
+                DestroyNotes();
                 StartCoroutine(DisplaySong1(song_1));
             }
             else if (currentSong == 1)
             {
+                DestroyNotes();
                 StartCoroutine(DisplaySong2(song_2));
             }
             else if (currentSong == 2)
             {
+                DestroyNotes();
                 StartCoroutine(DisplaySong3(song_3));
             }
             else if (currentSong == 3)

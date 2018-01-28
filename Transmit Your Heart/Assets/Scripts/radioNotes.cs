@@ -50,8 +50,6 @@ public class radioNotes : MonoBehaviour, NotesInterface
 	// Update is called once per frame
 	void Update () {
         if (canPlay == true && Input.GetKeyDown("space")) {
-
-            DestroyNotes();
             playSong();
         } 
 	}
@@ -83,14 +81,17 @@ public class radioNotes : MonoBehaviour, NotesInterface
             songs[currentSong].Play();
             if (currentSong == 0)
             {
+                DestroyNotes();
                 StartCoroutine(DisplaySong1(song_1));
             }
             else if (currentSong == 1)
             {
+                DestroyNotes();
                 StartCoroutine(DisplaySong2(song_2));
             }
             else if (currentSong == 2)
             {
+                DestroyNotes();
                 StartCoroutine(DisplaySong3(song_3));
             }
             else if (currentSong == 3)
