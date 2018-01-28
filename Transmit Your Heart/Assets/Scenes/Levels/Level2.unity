@@ -4798,7 +4798,7 @@ MonoBehaviour:
   - lG
   playerAnswer: []
   xOffset: -7.4
-  xScale: 0.9
+  xScale: 0.5
   lG: 2.95
   lA: 3.04
   lB: 3.165
