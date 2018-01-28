@@ -150,7 +150,8 @@ public class tvNotes : MonoBehaviour, NotesInterface
             yield return new WaitForSeconds(0.2f);
             notesPlayed++;
 
-            DestroyNotes();
+            //DestroyNotes();
+            notesPlayed = 0;
         }
     }
 
@@ -184,7 +185,8 @@ public class tvNotes : MonoBehaviour, NotesInterface
             yield return new WaitForSeconds(0.37f);
             notesPlayed++;
 
-            DestroyNotes();
+            //DestroyNotes();
+            notesPlayed = 0;
         }
     }
 
@@ -233,7 +235,8 @@ public class tvNotes : MonoBehaviour, NotesInterface
             yield return new WaitForSeconds(0.5f);
             notesPlayed++;
 
-            DestroyNotes();
+            //DestroyNotes();
+            notesPlayed = 0;
         }
     }
 
