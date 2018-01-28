@@ -97,6 +97,7 @@ public class satelliteNotes : MonoBehaviour, NotesInterface
             }
             else if (currentSong == 3)
             {
+                DestroyNotes();
                 PlaySong4(); 
             }
         }
