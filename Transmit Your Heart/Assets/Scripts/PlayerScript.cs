@@ -76,8 +76,11 @@ public class PlayerScript : MonoBehaviour {
         {
             return Vector2.zero;
         }
+        // Offset the player's position by it's collider.
+        Vector2 colliderPosition = gameObject.GetComponent<CircleCollider2D>().offset;
+        Vector2 playerPosition = transform.position;
         // Test for a solid tile in that direction.
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, currentDirection, dist);
+        RaycastHit2D hit = Physics2D.Raycast(colliderPosition + playerPosition, currentDirection, dist);
         #if (UNITY_EDITOR)
         Debug.DrawRay(transform.position, currentDirection, Color.red);
         #endif
