@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212862163927488664}
   - component: {fileID: 114528551099847782}
   m_Layer: 0
-  m_Name: Friendo
+  m_Name: friendo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
