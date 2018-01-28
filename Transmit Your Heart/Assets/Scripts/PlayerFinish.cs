@@ -78,13 +78,13 @@ public class PlayerFinish : MonoBehaviour
     // Help fix friendo
     IEnumerator findBestFriend()
     {
-        yield return new WaitForSeconds(24);
+        yield return new WaitForSeconds(22);
         Debug.Log("Found a friend on the same wavelength, FRIEND!");
         tuneOver = true;
         // Friend arrive!
         
         // Free roam
-        yield return new WaitForSeconds(3);
+        yield return new WaitForSeconds(4);
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GameState>().fadeSpeed = 0.5f;
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GameState>().fadeOut();
     }
