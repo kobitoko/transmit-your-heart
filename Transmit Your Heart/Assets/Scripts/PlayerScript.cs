@@ -59,17 +59,19 @@ public class PlayerScript : MonoBehaviour
             newPosition.x += inputMovement.x * walkSpeed * Time.deltaTime;
             newPosition.y += inputMovement.y * walkSpeed * Time.deltaTime;
             this.gameObject.GetComponent<Transform>().position = newPosition;
-        }
-        // Action
-        if (Input.GetButtonDown("Action") && closestFriendPart != null)
-        {
-            if (closestFriendPart.GetComponent<FriendoPartsScript>() != null)
+            // Action
+            if (Input.GetButtonDown("Action") && closestFriendPart != null)
             {
-                Debug.Log("HELLO FREND " + closestFriendPart.name);
-                // Rythm game sequence here.
-                StartCoroutine(pickupItemGame());
-            } else if (closestFriendPart.GetComponent<FriendoScript>() != null && inventory == 3) {
-                StartCoroutine(fixFriend());
+                if (closestFriendPart.GetComponent<FriendoPartsScript>() != null)
+                {
+                    Debug.Log("HELLO FREND " + closestFriendPart.name);
+                    // Rythm game sequence here.
+                    StartCoroutine(pickupItemGame());
+                }
+                else if (closestFriendPart.GetComponent<FriendoScript>() != null && inventory == 3)
+                {
+                    StartCoroutine(fixFriend());
+                }
             }
         }
     }
