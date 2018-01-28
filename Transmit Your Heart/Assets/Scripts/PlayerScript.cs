@@ -7,7 +7,7 @@ public class PlayerScript : MonoBehaviour
 {
     public float walkSpeed = 5;
     public GameObject closestFriendPart = null;
-    public List<KeyItem> inventory = new List<KeyItem>();
+    public int inventory = 0;
 
     float originalSpeed;
     Vector3Int position;
@@ -56,17 +56,32 @@ public class PlayerScript : MonoBehaviour
         // Action
         if (Input.GetButtonDown("Action") && closestFriendPart != null)
         {
-            Debug.Log("HELLO FREND " + closestFriendPart.name);
-            // Rythm game sequence here.
-            StartCoroutine(pickupItemGame());
+            if (closestFriendPart.GetComponent<FriendoPartsScript>() != null)
+            {
+                Debug.Log("HELLO FREND " + closestFriendPart.name);
+                // Rythm game sequence here.
+                StartCoroutine(pickupItemGame());
+            } else if (closestFriendPart.GetComponent<FriendoScript>() != null && inventory == 3) {
+                StartCoroutine(fixFriend());
+            }
         }
     }
 
+    // Picking up the items for the friendo
     IEnumerator pickupItemGame()
     {
+        // When the currentLevel increases in the music game it means they completed it.
         yield return new WaitUntil(() => true);
-        inventory.Add(closestFriendPart.GetComponent<InteractableScript>().giveItem());
-        Destroy(closestFriendPart);
+        inventory += 1;
+        Destroy(closestFriendPart); // Sad ;-; it gone.
+    }
+
+    // Help fix friendo
+    IEnumerator fixFriend()
+    {
+        // CurrentLevel = 4 <- magic number for the music game. 4 = finish npc.
+        yield return new WaitUntil(() => true);
+        Debug.Log("For fixing me, THANK FRIEND!");
     }
 
     /**

@@ -2,21 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KeyItem : MonoBehaviour {
-    public enum Types {
-        BrokenTv1,
-        BrokenTv2,
-        BrokenTv3
-    };
-    public string itemName = "";
+public class FriendoScript : InteractableScript {
+
+
 
 	// Use this for initialization
 	void Start () {
-    }
+        base.Start();
+	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+        base.Update();
 	}
-    
 }
