@@ -29,7 +29,7 @@ public class satelliteNotes : MonoBehaviour, NotesInterface
 
     public List<float> song_1 = new List<float> { 3.79f, 2.95f, 3.165f, 3.415f, 3.79f, 3.665f, 3.52f, 3.415f };//8
     public List<float> song_2 = new List<float> { 3.52f, 3.415f, 3.415f, 3.52f, 3.29f, 3.29f, 3.415f, 3.415f, 3.52f, 3.52f, 3.665f, 3.665f };//12
-    public List<float> song_3 = new List<float> { 3.29f, 4.04f, 3.79f };//3
+    public List<float> song_3 = new List<float> { 3.29f, 4.04f, 2.95f };//3
 
     public AudioSource[] songs;
     public Transform note;

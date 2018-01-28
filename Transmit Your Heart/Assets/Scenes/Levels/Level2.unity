@@ -4709,7 +4709,7 @@ MonoBehaviour:
   radio_1Answer:
   - D
   - lG
-  - lb
+  - lB
   - D
   - G
   - F#
@@ -4795,10 +4795,10 @@ MonoBehaviour:
   satellite_3Answer:
   - C
   - B
-  - G
+  - lG
   playerAnswer: []
   xOffset: -7.4
-  xScale: 0.5
+  xScale: 0.9
   lG: 2.95
   lA: 3.04
   lB: 3.165
