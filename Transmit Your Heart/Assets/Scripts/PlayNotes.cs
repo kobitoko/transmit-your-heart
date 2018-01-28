@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 
 public class PlayNotes : MonoBehaviour {
@@ -13,6 +14,7 @@ public class PlayNotes : MonoBehaviour {
     public GameObject npc;
     public Transform note;
     public int numNotesPlayed = 0;
+    public GameObject UISoundEffectslider;
 
     public List<string> radio_1Answer = new List<string> { "D", "G", "B", "D", "G", "F#", "E", "D" };
     public List<string> radio_2Answer = new List<string> { "E", "D", "C", "D", "G", "A" };
@@ -428,6 +430,15 @@ public class PlayNotes : MonoBehaviour {
             playerAnswer.Add("lG");
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[0].Play();
+        }
+    }
+
+    public void setVolume()
+    {
+        Slider soundEffectSlider = UISoundEffectslider.GetComponent<Slider>();
+        foreach(AudioSource audio in notes)
+        {
+            audio.volume = 1.0f * (soundEffectSlider.value / 100.0f);
         }
     }
 }

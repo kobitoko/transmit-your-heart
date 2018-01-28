@@ -1878,9 +1878,20 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114536036972605432, guid: 75ad6d5d9ae079a47b7bd5b32e1163e3,
+        type: 2}
+      propertyPath: UISoundEffectslider
+      value: 
+      objectReference: {fileID: 1556427694}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 75ad6d5d9ae079a47b7bd5b32e1163e3, type: 2}
   m_IsPrefabParent: 0
+--- !u!114 &969072695 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114536036972605432, guid: 75ad6d5d9ae079a47b7bd5b32e1163e3,
+    type: 2}
+  m_PrefabInternal: {fileID: 969072694}
+  m_Script: {fileID: 11500000, guid: 8609dc71223b2c643a12a384b5110407, type: 3}
 --- !u!1 &1091420342
 GameObject:
   m_ObjectHideFlags: 0
@@ -2201,6 +2212,16 @@ Prefab:
         type: 2}
       propertyPath: m_SortingOrder
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 114227766360108636, guid: 0f87381d78d6e0e4ba5dc395e4688b7c,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 969072695}
+    - target: {fileID: 114227766360108636, guid: 0f87381d78d6e0e4ba5dc395e4688b7c,
+        type: 2}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: setVolume
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0f87381d78d6e0e4ba5dc395e4688b7c, type: 2}
