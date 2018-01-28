@@ -53,6 +53,13 @@ public class FriendoScript : InteractableScript
         {
             footSteps.RemoveAt(0);
         }
+        // Visually puts friend infront of player if player is further up in the depth level Y.
+        if(player.transform.position.y + player.GetComponent<CircleCollider2D>().offset.y > transform.position.y)
+        {
+            gameObject.GetComponent<SpriteRenderer>().sortingOrder = 11;
+        } else {
+            gameObject.GetComponent<SpriteRenderer>().sortingOrder = 9;
+        }
     }
 
 }
