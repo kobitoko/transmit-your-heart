@@ -187,11 +187,11 @@ public class PlayNotes : MonoBehaviour {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), lG, 0));
             notes[0].Play();
         }
-        //B
+        //lB
         if (Input.GetKeyDown("3")) {
             playerAnswer.Add("lB");
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), B, 0));
-            notes[14].Play();
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), lB, 0));
+            notes[3].Play();
         }
         //F#
         if (Input.GetKeyDown("8")) {
@@ -374,11 +374,11 @@ public class PlayNotes : MonoBehaviour {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), lG, 0));
             notes[0].Play();
         }
-        //B
+        //lB
         if (Input.GetKeyDown("3")) {
-            playerAnswer.Add("B");
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), B, 0));
-            notes[14].Play();
+            playerAnswer.Add("lB");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), lB, 0));
+            notes[2].Play();
         }
         //D
         if (Input.GetKeyDown("8")) {
