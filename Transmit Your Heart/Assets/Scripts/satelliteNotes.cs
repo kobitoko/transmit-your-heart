@@ -59,6 +59,11 @@ public class satelliteNotes : MonoBehaviour, NotesInterface
         return currentSong;
     }
 
+    public void setCurrentSong(int newValue)
+    {
+        currentSong = newValue;
+    }
+
     public void playSong()
     {
         if (!songs[currentSong].isPlaying)

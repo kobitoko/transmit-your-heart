@@ -13,13 +13,14 @@ public class PlayerScript : MonoBehaviour
     Vector3Int position;
     GridScript gridScript;
     GameObject staffNotes;
+    NotesInterface notesPlay;
 
     public void Start()
     {
         staffNotes = GameObject.FindGameObjectWithTag("staff");
         originalSpeed = walkSpeed;
         staffNotes.SetActive(false);
-
+        notesPlay = GameObject.FindGameObjectWithTag("npc").GetComponent<NotesInterface>();
     }
 
     /**
@@ -49,30 +50,45 @@ public class PlayerScript : MonoBehaviour
 
     public void Update()
     {
-        // Movement
-        Vector2 inputMovement = tileDetect(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
-        inputMovement = Vector3.Normalize(inputMovement);
-        Vector3 newPosition = this.gameObject.GetComponent<Transform>().position;
-        newPosition.x += inputMovement.x * walkSpeed * Time.deltaTime;
-        newPosition.y += inputMovement.y * walkSpeed * Time.deltaTime;
-        this.gameObject.GetComponent<Transform>().position = newPosition;
-        // Action
-        if (Input.GetButtonDown("Action") && closestFriendPart != null)
+        // Movement only if not in rythm game mode.
+        if (notesPlay.canPlaySong() == false)
         {
-            if (closestFriendPart.GetComponent<FriendoPartsScript>() != null)
+            Vector2 inputMovement = tileDetect(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
+            inputMovement = Vector3.Normalize(inputMovement);
+            Vector3 newPosition = this.gameObject.GetComponent<Transform>().position;
+            newPosition.x += inputMovement.x * walkSpeed * Time.deltaTime;
+            newPosition.y += inputMovement.y * walkSpeed * Time.deltaTime;
+            this.gameObject.GetComponent<Transform>().position = newPosition;
+            // Action
+            if (Input.GetButtonDown("Action") && closestFriendPart != null)
             {
-                Debug.Log("HELLO FREND " + closestFriendPart.name);
-                // Rythm game sequence here.
-                StartCoroutine(pickupItemGame());
-            } else if (closestFriendPart.GetComponent<FriendoScript>() != null && inventory == 3) {
-                StartCoroutine(fixFriend());
+                if (closestFriendPart.GetComponent<FriendoPartsScript>() != null)
+                {
+                    Debug.Log("HELLO FREND " + closestFriendPart.name);
+                    // Rythm game sequence here.
+                    StartCoroutine(pickupItemGame());
+                }
+                else if (closestFriendPart.GetComponent<FriendoScript>() != null && inventory == 3)
+                {
+                    StartCoroutine(fixFriend());
+                }
             }
         }
+#if (UNITY_EDITOR)
+        // Test next level skipping song.
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            notesPlay.setCurrentSong(notesPlay.getCurrentSong() + 1);
+        }
+#endif
     }
 
+    /**
+     * begin is true if you start the song/rythm game, and false if you just end it.
+     */
     NotesInterface beginRythmGame(bool begin)
     {
-        NotesInterface notesPlay = GameObject.FindGameObjectWithTag("npc").GetComponent<NotesInterface>();
+        
         staffNotes.SetActive(begin);
         if (begin == true)
         {
@@ -91,6 +107,7 @@ public class PlayerScript : MonoBehaviour
         yield return new WaitUntil(() => (before + 1) == notesPlay.getCurrentSong());
         beginRythmGame(false);
         inventory += 1;
+        Debug.Log("CurrentSong: " + notesPlay.getCurrentSong());
         Destroy(closestFriendPart); // Sad ;-; it gone.
     }
 
@@ -99,9 +116,11 @@ public class PlayerScript : MonoBehaviour
     {
         // CurrentLevel = 4 <- magic number for the music game. 4 = finish npc.
         beginRythmGame(true);
-        yield return new WaitUntil(() => true);
+        yield return new WaitUntil(() => notesPlay.getCurrentSong() == 4);
         Debug.Log("For fixing me, THANK FRIEND!");
         beginRythmGame(false);
+        // Follow frend, he show da wae
+        closestFriendPart.GetComponent<FriendoScript>().gotFixed(); 
     }
 
     /**
