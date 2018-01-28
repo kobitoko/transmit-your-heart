@@ -16,9 +16,23 @@ using UnityEngine.Experimental.UIElements;
 
 public class tvNotes : MonoBehaviour, NotesInterface
 {
-    public List<float> song_1 = new List<float> { 3.415f, 3.415f, 3.415f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f }; //15
-    public List<float> song_2 = new List<float> { -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f }; //9
-    public List<float> song_3 = new List<float> { -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f }; //14
+    public float lG = 2.95f;
+    public float lA = 3.04f;
+    public float lB = 3.165f;
+    public float C = 3.29f;
+    public float D = 3.415f;
+    public float E = 3.52f;
+    public float F = 3.665f;
+    public float G = 3.79f;
+    public float A = 3.915f;
+    public float B = 4.04f;
+    public float hC = 4.165f;
+
+    public List<float> song_1 = new List<float> {3.415f, 3.415f , 3.415f ,2.95f, 2.95f, 2.95f,
+        3.165f, 3.165f, 3.165f, 3.415f, 3.415f, 3.415f,3.79f,3.79f,3.79f }; //15
+    public List<float> song_2 = new List<float> { 3.29f , 3.29f, 3.415f, 3.415f, 3.52f, 3.52f, 3.665f, 3.665f, 3.79f }; //9
+    public List<float> song_3 = new List<float> { 2.95f , 2.95f, 3.04f, 3.04f, 3.165f, 3.165f, 3.29f, 3.165f, 3.04f,
+    2.95f,2.95f,3.04f,3.04f,3.165f}; //14
 
 
     public AudioSource[] songs;

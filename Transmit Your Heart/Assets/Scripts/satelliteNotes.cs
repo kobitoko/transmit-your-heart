@@ -15,6 +15,18 @@ using UnityEngine;
 
 public class satelliteNotes : MonoBehaviour, NotesInterface
 {
+    public float lG = 2.95f;
+    public float lA = 3.04f;
+    public float lB = 3.165f;
+    public float C = 3.29f;
+    public float D = 3.415f;
+    public float E = 3.52f;
+    public float F = 3.665f;
+    public float G = 3.79f;
+    public float A = 3.915f;
+    public float B = 4.04f;
+    public float hC = 4.165f;
+
     public List<float> song_1 = new List<float> { -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f };//8
     public List<float> song_2 = new List<float> { -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f };//12
     public List<float> song_3 = new List<float> { -2.395f, -2.395f, -2.395f };//3
