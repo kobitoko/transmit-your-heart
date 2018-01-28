@@ -1,32 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIInventorySlot : MonoBehaviour {
 
-    GameObject electronicPart;
+    //GameObject electronicPart;
+    //Sprite sprite;
     bool objectCollected;
+    Image image;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         objectCollected = false;
+        image = GetComponent<Image>();
+        Color c = image.color;
+        c.a = 0.5f;
+        image.color = c;
     }
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
     public void gatherPart()
     {
-        electronicPart.GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+        Color c = image.color;
+        c.a = 1.0f;
+        image.color = c;
         objectCollected = true;
-    }
-
-    public void setPart(GameObject _gameObject)
-    {
-        electronicPart = _gameObject;
-        _gameObject.transform.position = gameObject.transform.position;
-        _gameObject.GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
     }
 }

@@ -10,9 +10,9 @@ public class GameState : MonoBehaviour {
     Slider musicSlider;
     public GameObject effectSliderObject;
     Slider effectSlider;
-
     public float musicVolume;
     public float effectVolume;
+
 
 	// Use this for initialization
 	void Start () {
