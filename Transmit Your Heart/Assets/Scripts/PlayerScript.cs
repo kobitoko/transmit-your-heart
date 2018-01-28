@@ -4,14 +4,17 @@ using UnityEngine;
 using UnityEngine.Tilemaps;
 
 public class PlayerScript : MonoBehaviour {
-    public float speed = 5;
+    public float walkSpeed = 5;
+    public GameObject closestFriendPart = null;
+
     float originalSpeed;
     Vector3Int position;
     GridScript gridScript;
+    
 
     public void Start()
     {
-        originalSpeed = speed;
+        originalSpeed = walkSpeed;
     }
 
     /**
@@ -22,10 +25,10 @@ public class PlayerScript : MonoBehaviour {
         // Special case, -1 means reset speed.
         if(newSpeed == -1)
         {
-            speed = originalSpeed;
+            walkSpeed = originalSpeed;
             return;
         }
-        this.speed = newSpeed;
+        this.walkSpeed = newSpeed;
     }
 
     public void setGridScript(GridScript _gridScript)
@@ -45,13 +48,13 @@ public class PlayerScript : MonoBehaviour {
         Vector2 inputMovement = tileDetect(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
         inputMovement = Vector3.Normalize(inputMovement);
         Vector3 newPosition = this.gameObject.GetComponent<Transform>().position;
-        newPosition.x += inputMovement.x * speed * Time.deltaTime;
-        newPosition.y += inputMovement.y * speed * Time.deltaTime;
+        newPosition.x += inputMovement.x * walkSpeed * Time.deltaTime;
+        newPosition.y += inputMovement.y * walkSpeed * Time.deltaTime;
         this.gameObject.GetComponent<Transform>().position = newPosition;
         // Action
-        if(Input.GetButtonDown("Action"))
+        if(Input.GetButtonDown("Action") && closestFriendPart != null)
         {
-            Debug.Log("HELLO FREND");
+            Debug.Log("HELLO FREND " + closestFriendPart.name);
         }
     }
 
