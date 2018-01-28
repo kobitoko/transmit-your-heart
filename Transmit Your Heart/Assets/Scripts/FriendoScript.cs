@@ -10,6 +10,7 @@ public class FriendoScript : InteractableScript
     PlayerScript player;
     SonarPingScript playerSonar;
     bool nowFixed = false;
+    GameObject arrowEndLevel;
 
     List<Vector2> footSteps = new List<Vector2>();
 
@@ -19,13 +20,15 @@ public class FriendoScript : InteractableScript
         base.Start();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
         playerSonar = GameObject.FindGameObjectWithTag("Player").GetComponent<SonarPingScript>();
-
+        arrowEndLevel = GameObject.Find("arrow");
+        arrowEndLevel.SetActive(false);
     }
 
     public void gotFixed()
     {
         nowFixed = true;
         gameObject.GetComponent<SpriteRenderer>().sprite = fixedSprite;
+        arrowEndLevel.SetActive(true);
     }
 
     // Update is called once per frame

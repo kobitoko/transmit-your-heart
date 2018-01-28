@@ -74,13 +74,18 @@ public class PlayerScript : MonoBehaviour
                 }
             }
         }
-#if (UNITY_EDITOR)
+        float halfHeight = Camera.main.GetComponent<Camera>().orthographicSize;
+        if (transform.position.y > (Camera.main.transform.position.y + halfHeight + 1))
+        {
+            GameObject.FindGameObjectWithTag("GameController").GetComponent<GameState>().fadeOut();
+        }
+        //#if (UNITY_EDITOR)
         // Test next level skipping song.
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            notesPlay.setCurrentSong(notesPlay.getCurrentSong() + 1);
+            notesPlay.setCurrentSong(Mathf.Clamp(notesPlay.getCurrentSong() + 1, 0, 4));
         }
-#endif
+        //#endif
     }
 
     /**
@@ -88,7 +93,7 @@ public class PlayerScript : MonoBehaviour
      */
     NotesInterface beginRythmGame(bool begin)
     {
-        
+
         staffNotes.SetActive(begin);
         if (begin == true)
         {
@@ -120,7 +125,7 @@ public class PlayerScript : MonoBehaviour
         Debug.Log("For fixing me, THANK FRIEND!");
         beginRythmGame(false);
         // Follow frend, he show da wae
-        closestFriendPart.GetComponent<FriendoScript>().gotFixed(); 
+        closestFriendPart.GetComponent<FriendoScript>().gotFixed();
     }
 
     /**
@@ -187,7 +192,4 @@ public class PlayerScript : MonoBehaviour
         }
         return true;
     }
-
-
-
 }

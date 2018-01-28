@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 114857958564383882}
   m_Layer: 0
   m_Name: GameStateObject
-  m_TagString: Untagged
+  m_TagString: GameController
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -56,3 +56,4 @@ MonoBehaviour:
   effectSliderObject: {fileID: 0}
   musicVolume: 50
   effectVolume: 50
+  fadeSpeed: 1
