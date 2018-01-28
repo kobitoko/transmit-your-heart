@@ -24,6 +24,7 @@ public class tvNotes : MonoBehaviour {
     public AudioSource[] songs;
     public Transform note;
     public GameObject[] noteClones;
+    public bool canPlay = false;
     bool song_1Played = false;
     bool song_2Played = false;
     bool song_3Played = false;
@@ -39,7 +40,7 @@ public class tvNotes : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (Input.GetKeyDown("space")) {
+        if (canPlay == true && Input.GetKeyDown("space")) {
             if (!songs[currentSong].isPlaying) {
                 songs[currentSong].Play();
                 if (currentSong == 0) {
