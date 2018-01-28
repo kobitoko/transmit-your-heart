@@ -65,9 +65,9 @@ public class SonarWave : MonoBehaviour
 
     public void play()
     {
+        playing = true;
         setScale(0.1f, gameObject);
         setObjectAlpha(1, gameObject);
-        playing = true;
     }
 
 }

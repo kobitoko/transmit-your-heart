@@ -58,16 +58,15 @@ public class SonarPingScript : MonoBehaviour
         foreach (GameObject sonar in sonarPings)
         {
             StartCoroutine(setWhenDone(sonar));
-
         }
     }
 
     IEnumerator setWhenDone(GameObject sonar)
     {
         yield return new WaitUntil(() => sonar.GetComponent<SonarWave>().playing == false);
+        sonar.GetComponent<SonarWave>().speed = pingSpeed;
         sonar.GetComponent<SpriteRenderer>().color = pingColor;
         sonar.GetComponent<SonarWave>().biggestSize = pingSize;
-        sonar.GetComponent<SonarWave>().speed = pingSpeed;
     }
 
     public void playPing()

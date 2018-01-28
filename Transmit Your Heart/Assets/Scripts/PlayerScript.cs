@@ -75,7 +75,7 @@ public class PlayerScript : MonoBehaviour
             }
         }
 #if (UNITY_EDITOR)
-        // Test next level
+        // Test next level skipping song.
         if (Input.GetKeyDown(KeyCode.Z))
         {
             notesPlay.setCurrentSong(notesPlay.getCurrentSong() + 1);
@@ -107,6 +107,7 @@ public class PlayerScript : MonoBehaviour
         yield return new WaitUntil(() => (before + 1) == notesPlay.getCurrentSong());
         beginRythmGame(false);
         inventory += 1;
+        Debug.Log("CurrentSong: " + notesPlay.getCurrentSong());
         Destroy(closestFriendPart); // Sad ;-; it gone.
     }
 
@@ -115,9 +116,11 @@ public class PlayerScript : MonoBehaviour
     {
         // CurrentLevel = 4 <- magic number for the music game. 4 = finish npc.
         beginRythmGame(true);
-        yield return new WaitUntil(() => true);
+        yield return new WaitUntil(() => notesPlay.getCurrentSong() == 4);
         Debug.Log("For fixing me, THANK FRIEND!");
         beginRythmGame(false);
+        // Follow frend, he show da wae
+        closestFriendPart.GetComponent<FriendoScript>().gotFixed(); 
     }
 
     /**
