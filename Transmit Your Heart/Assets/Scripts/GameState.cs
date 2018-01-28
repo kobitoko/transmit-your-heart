@@ -36,7 +36,7 @@ public class GameState : MonoBehaviour
         {
             float alphaValue = fadeObject.GetComponent<SpriteRenderer>().color.a;
             setObjectAlpha(alphaValue + (fadeSpeed * Time.deltaTime), fadeObject);
-            if(fadeObject.GetComponent<SpriteRenderer>().color.a < 0.9)
+            if(fadeObject.GetComponent<SpriteRenderer>().color.a >= 0.98)
             {
                 // Load next scene/level
                 Debug.Log("Done!");
@@ -54,7 +54,7 @@ public class GameState : MonoBehaviour
         {
             float alphaValue = fadeObject.GetComponent<SpriteRenderer>().color.a;
             setObjectAlpha(alphaValue - (fadeSpeed * Time.deltaTime), fadeObject);
-            if (fadeObject.GetComponent<SpriteRenderer>().color.a < 0.1)
+            if (fadeObject.GetComponent<SpriteRenderer>().color.a <= 0.02)
             {
                 fadeObject.SetActive(false);
                 fadeIn = false;
