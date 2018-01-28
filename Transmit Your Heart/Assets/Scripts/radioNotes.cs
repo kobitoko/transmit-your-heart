@@ -50,6 +50,8 @@ public class radioNotes : MonoBehaviour, NotesInterface
 	// Update is called once per frame
 	void Update () {
         if (canPlay == true && Input.GetKeyDown("space")) {
+
+            DestroyNotes();
             playSong();
         } 
 	}
@@ -126,7 +128,6 @@ public class radioNotes : MonoBehaviour, NotesInterface
             notesPlayed++;
 
             //DestroyNotes();
-            notesPlayed = 0;
         }
     }
 
@@ -152,7 +153,6 @@ public class radioNotes : MonoBehaviour, NotesInterface
             notesPlayed++;
 
             //DestroyNotes();
-            notesPlayed = 0;
         }
     }
 
@@ -178,7 +178,6 @@ public class radioNotes : MonoBehaviour, NotesInterface
             notesPlayed++;
 
             //DestroyNotes();
-            notesPlayed = 0;
         }
     }
 

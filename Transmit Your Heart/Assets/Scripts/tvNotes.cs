@@ -54,6 +54,9 @@ public class tvNotes : MonoBehaviour, NotesInterface
     // Update is called once per frame
     void Update() {
         if (canPlay == true && Input.GetKeyDown("space")) {
+
+
+            DestroyNotes();
             playSong();
         }
     }
@@ -151,11 +154,11 @@ public class tvNotes : MonoBehaviour, NotesInterface
             notesPlayed++;
 
             //DestroyNotes();
-            notesPlayed = 0;
         }
     }
 
     IEnumerator DisplaySong2(List<float> song) {
+
         if (notesPlayed < 9) {
             Instantiate(note, new Vector3(xOffset + (xScale * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
             yield return new WaitForSeconds(0.37f);
@@ -186,7 +189,6 @@ public class tvNotes : MonoBehaviour, NotesInterface
             notesPlayed++;
 
             //DestroyNotes();
-            notesPlayed = 0;
         }
     }
 
@@ -236,7 +238,6 @@ public class tvNotes : MonoBehaviour, NotesInterface
             notesPlayed++;
 
             //DestroyNotes();
-            notesPlayed = 0;
         }
     }
 

@@ -26,7 +26,7 @@ public class PlayNotes : MonoBehaviour {
 
     public List<string> satellite_1Answer = new List<string> { "G", "lG", "lB", "D", "G", "F", "E", "D" };
     public List<string> satellite_2Answer = new List<string> { "E", "D", "D", "E", "C","C", "D", "D","E","E","F","F" };
-    public List<string> satellite_3Answer = new List<string> { "C", "B", "G" };
+    public List<string> satellite_3Answer = new List<string> { "C", "B", "lG" };
 
     public List<string> playerAnswer = new List<string>();
 
@@ -446,11 +446,11 @@ public class PlayNotes : MonoBehaviour {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), B, 0));
             notes[14].Play();
         }
-        //G
+        //lG
         if (Input.GetKeyDown("3")) {
-            playerAnswer.Add("G");
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), G, 0));
-            notes[10].Play();
+            playerAnswer.Add("lG");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), lG, 0));
+            notes[0].Play();
         }
     }
 
