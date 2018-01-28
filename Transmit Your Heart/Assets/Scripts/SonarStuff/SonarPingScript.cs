@@ -44,6 +44,33 @@ public class SonarPingScript : MonoBehaviour
 #endif
     }
 
+    public void changePingSpeed(float pingVelocity)
+    {
+        pingSpeed = pingVelocity;
+        foreach (GameObject sonar in sonarPings)
+        {
+            sonar.GetComponent<SonarWave>().speed = pingSpeed;
+        }
+    }
+
+    public void changePingSize(float size)
+    {
+        pingSize = size;
+        foreach (GameObject sonar in sonarPings)
+        {
+            sonar.GetComponent<SonarWave>().biggestSize = pingSize;
+        }
+    }
+
+    public void changePingColor(Color color)
+    {
+        pingColor = color;
+        foreach (GameObject sonar in sonarPings)
+        {
+            sonar.GetComponent<SpriteRenderer>().color = color;
+        }
+    }
+
     public void playPing()
     {
         if (playedOnce == true)

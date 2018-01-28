@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class FriendoPartsScript : InteractableScript
 {
+
+    SonarPingScript playerSonar;
+
     // Use this for initialization
-    void Start()
+    new void Start()
     {
         base.Start();
+        playerSonar = GameObject.FindGameObjectWithTag("Player").GetComponent<SonarPingScript>();
     }
 
     // Update is called once per frame
-    void Update()
+    new void Update()
     {
         base.Update();
+        if (isNear == true && playerSonar.pingColor != Color.cyan)
+        {
+            playerSonar.gameObject.GetComponent<SonarPingScript>().changePingColor(Color.cyan);
+        }
     }
 }
