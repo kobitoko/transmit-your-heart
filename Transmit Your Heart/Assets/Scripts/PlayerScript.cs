@@ -41,12 +41,18 @@ public class PlayerScript : MonoBehaviour {
 
     public void Update()
     {
+        // Movement
         Vector2 inputMovement = tileDetect(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
         inputMovement = Vector3.Normalize(inputMovement);
         Vector3 newPosition = this.gameObject.GetComponent<Transform>().position;
         newPosition.x += inputMovement.x * speed * Time.deltaTime;
         newPosition.y += inputMovement.y * speed * Time.deltaTime;
         this.gameObject.GetComponent<Transform>().position = newPosition;
+        // Action
+        if(Input.GetButtonDown("Action"))
+        {
+            Debug.Log("HELLO FREND");
+        }
     }
 
     /**
@@ -108,4 +114,7 @@ public class PlayerScript : MonoBehaviour {
         }
         return true;
     }
+
+
+
 }
