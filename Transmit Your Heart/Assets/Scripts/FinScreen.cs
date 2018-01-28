@@ -16,8 +16,8 @@ public class FinScreen : MonoBehaviour {
 		if(startAppear == true)
         {
             Color newColor = gameObject.GetComponent<SpriteRenderer>().color;
-            newColor.a += 1f * Time.deltaTime;
-            setObjectAlpha(0f, gameObject);
+            newColor.a += 0.5f * Time.deltaTime;
+            setObjectAlpha(newColor.a, gameObject);
         }
 	}
 

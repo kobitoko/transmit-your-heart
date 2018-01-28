@@ -14,13 +14,16 @@ public class PlayerScript : MonoBehaviour
     GridScript gridScript;
     GameObject staffNotes;
     NotesInterface notesPlay;
-
+    GameObject staffLines;
     public void Start()
     {
         staffNotes = GameObject.FindGameObjectWithTag("staff");
         originalSpeed = walkSpeed;
         staffNotes.SetActive(false);
         notesPlay = GameObject.FindGameObjectWithTag("npc").GetComponent<NotesInterface>();
+
+        staffLines = GameObject.Find("staff_lines");
+        staffLines.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
     }
 
     /**
@@ -98,11 +101,14 @@ public class PlayerScript : MonoBehaviour
      */
     NotesInterface beginRythmGame(bool begin)
     {
-
+        staffLines.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 1.0f);
         staffNotes.SetActive(begin);
         if (begin == true)
         {
             notesPlay.playSong();
+        }
+        else {
+            staffLines.GetComponent<SpriteRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.0f);
         }
         notesPlay.setCanPlaySong(begin);
         return notesPlay;

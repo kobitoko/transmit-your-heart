@@ -336,23 +336,23 @@ public class PlayNotes : MonoBehaviour {
 
     }
     void TVSong_3Controls() {
-        //G
+        //lG
         if (Input.GetKeyDown("1")) {
-            playerAnswer.Add("G");
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), G, 0));
-            notes[10].Play();
+            playerAnswer.Add("lG");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), lG, 0));
+            notes[0].Play();
         }
-        //A
+        //lA
         if (Input.GetKeyDown("2")) {
-            playerAnswer.Add("A");
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), A, 0));
-            notes[12].Play();
+            playerAnswer.Add("lA");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), lA, 0));
+            notes[1].Play();
         }
-        //B
+        //lB
         if (Input.GetKeyDown("3")) {
-            playerAnswer.Add("B");
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), B, 0));
-            notes[14].Play();
+            playerAnswer.Add("lB");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), lB, 0));
+            notes[2].Play();
         }
         //C
         if (Input.GetKeyDown("8")) {
