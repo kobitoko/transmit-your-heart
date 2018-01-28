@@ -128,7 +128,8 @@ public class PlayerScript : MonoBehaviour
     {
         // CurrentLevel = 4 <- magic number for the music game. 4 = finish npc.
         beginRythmGame(true);
-        yield return new WaitUntil(() => notesPlay.getCurrentSong() == 4);
+        notesPlay.setCurrentSong(4);
+        yield return new WaitForSeconds(20);
         Debug.Log("For fixing me, THANK FRIEND!");
         beginRythmGame(false);
         // Follow frend, he show da wae

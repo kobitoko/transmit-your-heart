@@ -29,6 +29,16 @@ public class GameState : MonoBehaviour
         musicSlider = musicSliderObject.GetComponent<Slider>();
         effectSlider = effectSliderObject.GetComponent<Slider>();
         fadeObject = GameObject.Find("blackFade");
+        if(SceneManager.GetActiveScene().name == "Level4")
+        {
+            GameObject friendManager = GameObject.Find("FriendManager");
+            foreach(FriendFollow friendBye in friendManager.GetComponent<FriendManager>().friends)
+            {
+                Destroy(friendBye);
+            }
+            Destroy(friendManager);
+            GameObject.Find("Part Slots").SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -72,6 +82,7 @@ public class GameState : MonoBehaviour
                 else if (SceneManager.GetActiveScene().name == "Level3")
                 {
                     // Thanks for playing
+                    SceneManager.LoadScene("Level4");
                 }
             }
         }

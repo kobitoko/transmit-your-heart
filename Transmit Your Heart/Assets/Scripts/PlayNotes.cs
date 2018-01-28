@@ -19,17 +19,14 @@ public class PlayNotes : MonoBehaviour {
     public List<string> radio_1Answer = new List<string> { "D", "G", "B", "D", "G", "F#", "E", "D" };
     public List<string> radio_2Answer = new List<string> { "E", "D", "C", "D", "G", "A" };
     public List<string> radio_3Answer = new List<string> { "E", "F#", "G", "C", "B", "G"};
-    public List<string> radio_4Answer = new List<string> { "D", "G", "B", "D", "G", "F#", "E", "D", "E", "D", "C", "D", "G", "A", "E", "F#", "G", "C", "B", "G" };
 
     public List<string> tv_1Answer = new List<string> { "D", "lG", "lB", "D", "G" };
     public List<string> tv_2Answer = new List<string> { "C", "D", "E", "F", "G" };
     public List<string> tv_3Answer = new List<string> { "G", "A", "B", "A", "G", "A", "G" };
-    public List<string> tv_4Answer = new List<string> { "D", "G", "B", "D", "G", "C", "D", "E", "F", "G", "G", "A", "B", "A", "G", "A", "G" };
 
     public List<string> satellite_1Answer = new List<string> { "G", "lG", "B", "D", "G", "F", "E", "D" };
     public List<string> satellite_2Answer = new List<string> { "E", "D", "C", "D", "E","F" };
     public List<string> satellite_3Answer = new List<string> { "hC", "B", "lG" };
-    public List<string> satellite_4Answer = new List<string> { "G", "lG", "B", "D", "G", "F", "E", "D", "E", "D", "C", "D", "E", "F", "hC", "B", "lG" };
 
     public List<string> playerAnswer = new List<string>();
 
@@ -47,7 +44,7 @@ public class PlayNotes : MonoBehaviour {
         if(SceneManager.GetActiveScene().name == "Level1") {
             if(npc.GetComponent<tvNotes>().currentSong == 0) {
                 TVSong_1Controls();
-                if(compareAnswers(playerAnswer, tv_1Answer) == true) {
+                if (compareAnswers(playerAnswer, tv_1Answer) == true) {
                     npc.GetComponent<tvNotes>().currentSong++;
                     DestroyInstant();
                 }
@@ -55,7 +52,6 @@ public class PlayNotes : MonoBehaviour {
             else if(npc.GetComponent<tvNotes>().currentSong == 1) {
                 TVSong_2Controls();
                 if (compareAnswers(playerAnswer, tv_2Answer) == true) {
-                    StartCoroutine(WaitForMusic());
                     npc.GetComponent<tvNotes>().currentSong++;
                     DestroyInstant();
                 }
@@ -115,10 +111,7 @@ public class PlayNotes : MonoBehaviour {
             }
         }
     }
-
-    IEnumerator WaitForMusic() {
-        yield return new WaitForSeconds(1);
-    }
+    
     void DisplayNote(Vector3 position) {
         if (numNotesPlayed < 15) {
             Instantiate(note, position, Quaternion.identity);
@@ -130,6 +123,9 @@ public class PlayNotes : MonoBehaviour {
         }
     }
 
+    IEnumerator WaitForSong() {
+        yield return new WaitForSeconds(3);
+    }
     IEnumerator DestroyNotes() {
         yield return new WaitForSeconds(10);
         for (int i = 0; i < numNotesPlayed; i++) {
@@ -145,6 +141,7 @@ public class PlayNotes : MonoBehaviour {
         playerAnswer.Clear();
         numNotesPlayed = 0;
     }
+
     public bool compareAnswers(List<string> list1, List<string> list2) {
         if(list1.Count != list2.Count) {
             return false;
@@ -155,7 +152,6 @@ public class PlayNotes : MonoBehaviour {
                 return false;
             }
         }
-
         return true;
     }
 
