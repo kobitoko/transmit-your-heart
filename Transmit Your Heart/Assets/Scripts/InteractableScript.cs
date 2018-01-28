@@ -5,6 +5,7 @@ using UnityEngine;
 public class InteractableScript : MonoBehaviour {
     public float interactableDistance = 0.75f;
     public KeyItem keyItemPrefab;
+    public KeyItem.Types ItemTypeToGive;
 
 	// Use this for initialization
 	void Start () {
@@ -30,7 +31,9 @@ public class InteractableScript : MonoBehaviour {
     {
         GameObject keyItem = Instantiate(keyItemPrefab.gameObject);
         // Hide item.
-        //keyItem.GetComponent<SpriteRenderer>()
+        Vector2 hiddenPosition = Camera.main.transform.position;
+        hiddenPosition.y -= Camera.main.GetComponent<Camera>().orthographicSize + 2;
+        keyItem.transform.position = hiddenPosition;
         return keyItem.GetComponent<KeyItem>();
     }
 
