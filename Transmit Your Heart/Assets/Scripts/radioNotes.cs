@@ -13,7 +13,8 @@ using UnityEngine;
 
 
 
-public class radioNotes : MonoBehaviour {
+public class radioNotes : MonoBehaviour, NotesInterface
+{
     public List<float> song_1 = new List<float> { -1.095f, -2.395f, -1.745f, -1.095f, -0.12f, -0.445f, -0.77f, -1.095f };
     public List<float> song_2 = new List<float> { -0.77f, -1.095f, -1.42f, -1.095f, -2.395f, -2.07f };
     public List<float> song_3 = new List<float> { -3.045f, -2.72f, -2.395f, -1.42f, -1.745f, -2.395f };
@@ -38,20 +39,48 @@ public class radioNotes : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (canPlay == true && Input.GetKeyDown("space")) {
-            if (!songs[currentSong].isPlaying) {
-                songs[currentSong].Play();
-                if (currentSong == 0) {
-                    StartCoroutine(DisplaySong1(song_1));
-                }else if(currentSong == 1) {
-                    StartCoroutine(DisplaySong2(song_2));
-                }else if(currentSong == 2) {
-                    StartCoroutine(DisplaySong3(song_3));
-                }else if(currentSong == 3) {
-                    StartCoroutine(DisplaySong4(song_4));
-                }
-            }
+            playSong();
         } 
 	}
+
+    public bool canPlaySong()
+    {
+        return canPlay;
+    }
+
+    public void setCanPlaySong(bool canIndeed)
+    {
+        canPlay = canIndeed;
+    }
+
+    public int getCurrentSong()
+    {
+        return currentSong;
+    }
+
+    public void playSong()
+    {
+        if (!songs[currentSong].isPlaying)
+        {
+            songs[currentSong].Play();
+            if (currentSong == 0)
+            {
+                StartCoroutine(DisplaySong1(song_1));
+            }
+            else if (currentSong == 1)
+            {
+                StartCoroutine(DisplaySong2(song_2));
+            }
+            else if (currentSong == 2)
+            {
+                StartCoroutine(DisplaySong3(song_3));
+            }
+            else if (currentSong == 3)
+            {
+                StartCoroutine(DisplaySong4(song_4));
+            }
+        }
+    }
 
     IEnumerator DisplaySong1(List<float> song) {
         if (notesPlayed < 8) {
