@@ -41,12 +41,18 @@ public class PlayerScript : MonoBehaviour {
 
     public void Update()
     {
+        // Movement
         Vector2 inputMovement = tileDetect(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
         inputMovement = Vector3.Normalize(inputMovement);
         Vector3 newPosition = this.gameObject.GetComponent<Transform>().position;
         newPosition.x += inputMovement.x * speed * Time.deltaTime;
         newPosition.y += inputMovement.y * speed * Time.deltaTime;
         this.gameObject.GetComponent<Transform>().position = newPosition;
+        // Action
+        if(Input.GetButtonDown("Action"))
+        {
+            Debug.Log("HELLO FREND");
+        }
     }
 
     /**
@@ -76,8 +82,11 @@ public class PlayerScript : MonoBehaviour {
         {
             return Vector2.zero;
         }
+        // Offset the player's position by it's collider.
+        Vector2 colliderPosition = gameObject.GetComponent<CircleCollider2D>().offset;
+        Vector2 playerPosition = transform.position;
         // Test for a solid tile in that direction.
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, currentDirection, dist);
+        RaycastHit2D hit = Physics2D.Raycast(colliderPosition + playerPosition, currentDirection, dist);
         #if (UNITY_EDITOR)
         Debug.DrawRay(transform.position, currentDirection, Color.red);
         #endif
@@ -105,4 +114,7 @@ public class PlayerScript : MonoBehaviour {
         }
         return true;
     }
+
+
+
 }
