@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4790353842073836}
   - component: {fileID: 212608313242615446}
-  - component: {fileID: 114550640219706664}
+  - component: {fileID: 114402385166550994}
   m_Layer: 0
   m_Name: InteractableItem
   m_TagString: Untagged
@@ -35,13 +35,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1926583273856314}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.73, y: 2.54, z: 0}
+  m_LocalPosition: {x: -0.49, y: 2.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114550640219706664
+--- !u!114 &114402385166550994
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -49,13 +49,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1926583273856314}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc2cd4d49e0840a47beac4fdc61b8a84, type: 3}
+  m_Script: {fileID: 11500000, guid: c18cf8e76c6068f40bfabc73c07a36ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactableDistance: 1.2
-  keyItemPrefab: {fileID: 114256303799458978, guid: dd75304bbaff49243ae5de33dd17aad0,
-    type: 2}
-  ItemTypeToGive: 0
+  interactableDistance: 1
 --- !u!212 &212608313242615446
 SpriteRenderer:
   m_ObjectHideFlags: 1

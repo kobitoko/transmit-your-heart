@@ -204,8 +204,7 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 7b8f12e0a9b2cf14dab602ec3524993d,
         type: 3}
-    - target: {fileID: 114550640219706664, guid: 14b7f9a1c8c5f8e4ba10835fe9a2a5a3,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: ItemTypeToGive
       value: 2
       objectReference: {fileID: 0}
@@ -1525,23 +1524,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1300964743 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1096720653670798, guid: a6806a2ed6316db4f826ac40f3454e45,
-    type: 2}
-  m_PrefabInternal: {fileID: 176983697}
---- !u!114 &1300964744
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1300964743}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2206808cea3239439154f748779264f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemsNeeded: 000000000100000002000000
 --- !u!1001 &1566947298
 Prefab:
   m_ObjectHideFlags: 0
@@ -1591,8 +1573,7 @@ Prefab:
       value: 
       objectReference: {fileID: 21300000, guid: 1a41b0d829b458640b566d60f841e4ae,
         type: 3}
-    - target: {fileID: 114550640219706664, guid: 14b7f9a1c8c5f8e4ba10835fe9a2a5a3,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: ItemTypeToGive
       value: 1
       objectReference: {fileID: 0}

@@ -3,16 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InteractableScript : MonoBehaviour {
-    public float interactableDistance = 0.75f;
-    public KeyItem keyItemPrefab;
-    public KeyItem.Types ItemTypeToGive;
+    public float interactableDistance = 1f;
 
 	// Use this for initialization
-	void Start () {
+	protected void Start () {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	protected void Update () {
         Vector2 playerPosition = GameObject.FindGameObjectWithTag("Player").transform.position;
         if(Vector2.Distance(transform.position , playerPosition)  < interactableDistance)
         {
@@ -22,19 +20,9 @@ public class InteractableScript : MonoBehaviour {
             GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().closestFriendPart = null;
         }
 	}
-    void playInteractiveAnim()
+    protected void playInteractiveAnim()
     {
         GameObject.FindGameObjectWithTag("Player").GetComponent<SonarPingScript>().playPing();
-    }
-
-    public KeyItem giveItem()
-    {
-        GameObject keyItem = Instantiate(keyItemPrefab.gameObject);
-        // Hide item.
-        Vector2 hiddenPosition = Camera.main.transform.position;
-        hiddenPosition.y -= Camera.main.GetComponent<Camera>().orthographicSize + 2;
-        keyItem.transform.position = hiddenPosition;
-        return keyItem.GetComponent<KeyItem>();
     }
 
 }

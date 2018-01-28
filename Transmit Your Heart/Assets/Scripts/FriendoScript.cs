@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FriendoScript : MonoBehaviour {
+public class FriendoScript : InteractableScript {
 
-    public List<KeyItem.Types> itemsNeeded = new List<KeyItem.Types>(3);
+
 
 	// Use this for initialization
 	void Start () {
-		
+        base.Start();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+        base.Update();
 	}
 }
