@@ -38,20 +38,33 @@ public class radioNotes : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         if (canPlay == true && Input.GetKeyDown("space")) {
-            if (!songs[currentSong].isPlaying) {
-                songs[currentSong].Play();
-                if (currentSong == 0) {
-                    StartCoroutine(DisplaySong1(song_1));
-                }else if(currentSong == 1) {
-                    StartCoroutine(DisplaySong2(song_2));
-                }else if(currentSong == 2) {
-                    StartCoroutine(DisplaySong3(song_3));
-                }else if(currentSong == 3) {
-                    StartCoroutine(DisplaySong4(song_4));
-                }
-            }
+            playSong();
         } 
 	}
+
+    public void playSong()
+    {
+        if (!songs[currentSong].isPlaying)
+        {
+            songs[currentSong].Play();
+            if (currentSong == 0)
+            {
+                StartCoroutine(DisplaySong1(song_1));
+            }
+            else if (currentSong == 1)
+            {
+                StartCoroutine(DisplaySong2(song_2));
+            }
+            else if (currentSong == 2)
+            {
+                StartCoroutine(DisplaySong3(song_3));
+            }
+            else if (currentSong == 3)
+            {
+                StartCoroutine(DisplaySong4(song_4));
+            }
+        }
+    }
 
     IEnumerator DisplaySong1(List<float> song) {
         if (notesPlayed < 8) {

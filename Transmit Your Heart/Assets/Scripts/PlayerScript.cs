@@ -75,8 +75,13 @@ public class PlayerScript : MonoBehaviour
     {
         // When the currentLevel increases in the music game it means they completed it.
         staffNotes.SetActive(true);
-        yield return new WaitUntil(() => true);
+        tvNotes tv = GameObject.FindGameObjectWithTag("npc").GetComponent<tvNotes>();
+        tv.playSong();
+        tv.canPlay = true;
+        int before = tv.currentSong;
+        yield return new WaitUntil(() => before + 1 == tv.currentSong);
         staffNotes.SetActive(false);
+        tv.canPlay = false;
         inventory += 1;
         Destroy(closestFriendPart); // Sad ;-; it gone.
     }
