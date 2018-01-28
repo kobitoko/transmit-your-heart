@@ -68,6 +68,7 @@ public class GameState : MonoBehaviour
                 Sprite realFriendLooks = friendToClone.GetComponentInParent<SpriteRenderer>().sprite;
                 clonedFriend.GetComponent<SpriteRenderer>().sprite = realFriendLooks;
                 friendManager.GetComponent<FriendManager>().friends.Add(clonedFriend.GetComponent<FriendFollow>());
+                clonedFriend.layer = 8;
 
                 // Load next scene/level
                 Debug.Log("Done!");
