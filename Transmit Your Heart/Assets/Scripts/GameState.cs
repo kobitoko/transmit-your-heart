@@ -20,6 +20,8 @@ public class GameState : MonoBehaviour
     bool fadeIn = true;
     public float fadeSpeed = 2f;
 
+    public GameObject friendo;
+
 
     // Use this for initialization
     void Start()
@@ -38,6 +40,14 @@ public class GameState : MonoBehaviour
             setObjectAlpha(alphaValue + (fadeSpeed * Time.deltaTime), fadeObject);
             if(fadeObject.GetComponent<SpriteRenderer>().color.a >= 0.98)
             {
+                // Add a fake friend, the real friend is destroyed in this scene (T-T)
+                GameObject clonedFriend = Instantiate(friendo);
+                GameObject friendToClone = GameObject.FindGameObjectWithTag("npc");
+                Sprite realFriendLooks = friendToClone.GetComponentInParent<SpriteRenderer>().sprite;
+                clonedFriend.GetComponent<SpriteRenderer>().sprite = realFriendLooks;
+                clonedFriend.GetComponent<Transform>().position = friendToClone.transform.position;
+                GameObject.Find("FriendManager").GetComponent<FriendManager>().friends.Add(clonedFriend.GetComponent<FriendFollow>());
+
                 // Load next scene/level
                 Debug.Log("Done!");
                 if(SceneManager.GetActiveScene().name == "Level1")
