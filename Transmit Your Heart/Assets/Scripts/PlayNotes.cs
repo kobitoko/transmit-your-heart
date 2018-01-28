@@ -67,27 +67,27 @@ public class PlayNotes : MonoBehaviour {
     void RadioSong_1Controls() {
 
         //D
-        if (Input.GetKeyDown("q")) {
+        if (Input.GetKeyDown("1")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[5].Play();
         }
         //G
-        if (Input.GetKeyDown("w")) {
+        if (Input.GetKeyDown("2")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[10].Play();
         }
         //B
-        if (Input.GetKeyDown("e")) {
+        if (Input.GetKeyDown("3")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[14].Play();
         }
         //F#
-        if (Input.GetKeyDown("r")) {
+        if (Input.GetKeyDown("8")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[9].Play();
         }
         //E
-        if (Input.GetKeyDown("t")) {
+        if (Input.GetKeyDown("9")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[7].Play();
         }
@@ -95,27 +95,27 @@ public class PlayNotes : MonoBehaviour {
 
     void RadioSong_2Controls() {
         //E
-        if (Input.GetKeyDown("q")) {
+        if (Input.GetKeyDown("1")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[7].Play();
         }
         //D
-        if (Input.GetKeyDown("w")) {
+        if (Input.GetKeyDown("2")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[5].Play();
         }
         //C
-        if (Input.GetKeyDown("e")) {
+        if (Input.GetKeyDown("3")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[3].Play();
         }
         //G
-        if (Input.GetKeyDown("r")) {
+        if (Input.GetKeyDown("8")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[10].Play();
         }
         //A
-        if (Input.GetKeyDown("t")) {
+        if (Input.GetKeyDown("9")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[12].Play();
         }
@@ -123,27 +123,27 @@ public class PlayNotes : MonoBehaviour {
     }
     void RadioSong_3Controls() {
         //E
-        if (Input.GetKeyDown("q")) {
+        if (Input.GetKeyDown("1")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[7].Play();
         }
         //F#
-        if (Input.GetKeyDown("w")) {
+        if (Input.GetKeyDown("2")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[9].Play();
         }
         //G
-        if (Input.GetKeyDown("e")) {
+        if (Input.GetKeyDown("3")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[10].Play();
         }
         //C
-        if (Input.GetKeyDown("r")) {
+        if (Input.GetKeyDown("8")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[3].Play();
         }
         //B
-        if (Input.GetKeyDown("t")) {
+        if (Input.GetKeyDown("9")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[14].Play();
         }
@@ -152,17 +152,17 @@ public class PlayNotes : MonoBehaviour {
 
     void TVSong_1Controls() {
         //D
-        if (Input.GetKeyDown("q")) {
+        if (Input.GetKeyDown("1")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[5].Play();
         }
         //G
-        if (Input.GetKeyDown("w")) {
+        if (Input.GetKeyDown("2")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[10].Play();
         }
         //B
-        if (Input.GetKeyDown("e")) {
+        if (Input.GetKeyDown("3")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[14].Play();
         }
@@ -170,27 +170,27 @@ public class PlayNotes : MonoBehaviour {
     }
     void TVSong_2Controls() {
         //C
-        if (Input.GetKeyDown("q")) {
+        if (Input.GetKeyDown("1")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[3].Play();
         }
         //D
-        if (Input.GetKeyDown("w")) {
+        if (Input.GetKeyDown("2")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[14].Play();
         }
         //E
-        if (Input.GetKeyDown("e")) {
+        if (Input.GetKeyDown("3")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[7].Play();
         }
         //F
-        if (Input.GetKeyDown("r")) {
+        if (Input.GetKeyDown("8")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[8].Play();
         }
         //G
-        if (Input.GetKeyDown("t")) {
+        if (Input.GetKeyDown("9")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[10].Play();
         }
@@ -198,54 +198,54 @@ public class PlayNotes : MonoBehaviour {
     }
     void TVSong_3Controls() {
         //G
-        if (Input.GetKeyDown("q")) {
+        if (Input.GetKeyDown("1")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[10].Play();
         }
         //A
-        if (Input.GetKeyDown("w")) {
+        if (Input.GetKeyDown("2")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[12].Play();
         }
         //B
-        if (Input.GetKeyDown("e")) {
+        if (Input.GetKeyDown("3")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[14].Play();
         }
         //C
-        if (Input.GetKeyDown("r")) {
+        if (Input.GetKeyDown("8")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[3].Play();
         }
     }
     void SatelliteSong_1Controls() {
         //hG
-        if (Input.GetKeyDown("q")) {
+        if (Input.GetKeyDown("1")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[10].Play();
         }
         //lG
-        if (Input.GetKeyDown("w")) {
+        if (Input.GetKeyDown("2")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[0].Play();
         }
         //B
-        if (Input.GetKeyDown("e")) {
+        if (Input.GetKeyDown("3")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[14].Play();
         }
         //D
-        if (Input.GetKeyDown("r")) {
+        if (Input.GetKeyDown("8")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[5].Play();
         }
         //E
-        if (Input.GetKeyDown("t")) {
+        if (Input.GetKeyDown("9")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[7].Play();
         }
         //F
-        if (Input.GetKeyDown("y")) {
+        if (Input.GetKeyDown("0")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[8].Play();
         }
@@ -253,22 +253,22 @@ public class PlayNotes : MonoBehaviour {
     }
     void SatelliteSong_2Controls() {
         //E
-        if (Input.GetKeyDown("q")) {
+        if (Input.GetKeyDown("1")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[7].Play();
         }
         //D
-        if (Input.GetKeyDown("w")) {
+        if (Input.GetKeyDown("2")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[5].Play();
         }
         //lC
-        if (Input.GetKeyDown("e")) {
+        if (Input.GetKeyDown("3")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[3].Play();
         }
         //F
-        if (Input.GetKeyDown("r")) {
+        if (Input.GetKeyDown("8")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[8].Play();
         }
@@ -276,17 +276,17 @@ public class PlayNotes : MonoBehaviour {
     }
     void SatelliteSong_3Controls() {
         //hC
-        if (Input.GetKeyDown("q")) {
+        if (Input.GetKeyDown("1")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[15].Play();
         }
         //B
-        if (Input.GetKeyDown("w")) {
+        if (Input.GetKeyDown("2")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[14].Play();
         }
         //lG
-        if (Input.GetKeyDown("e")) {
+        if (Input.GetKeyDown("3")) {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[0].Play();
         }
