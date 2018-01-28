@@ -31,12 +31,6 @@ public class GameState : MonoBehaviour
         fadeObject = GameObject.Find("blackFade");
         if(SceneManager.GetActiveScene().name == "Level4")
         {
-            GameObject friendManager = GameObject.Find("FriendManager");
-            foreach(FriendFollow friendBye in friendManager.GetComponent<FriendManager>().friends)
-            {
-                Destroy(friendBye);
-            }
-            Destroy(friendManager);
             GameObject.Find("Part Slots").SetActive(false);
         }
     }
