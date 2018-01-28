@@ -83,7 +83,12 @@ public class PlayerScript : MonoBehaviour
         // Test next level skipping song.
         if (Input.GetKeyDown(KeyCode.Z))
         {
-            notesPlay.setCurrentSong(Mathf.Clamp(notesPlay.getCurrentSong() + 1, 0, 4));
+            int increase = notesPlay.getCurrentSong() + 1;
+            if(increase > 4)
+            {
+                increase = 4;
+            }
+            notesPlay.setCurrentSong(increase);
         }
         //#endif
     }
