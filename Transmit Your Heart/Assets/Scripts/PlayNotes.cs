@@ -193,14 +193,20 @@ public class PlayNotes : MonoBehaviour {
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), lB, 0));
             notes[3].Play();
         }
-        //F#
+        //G
         if (Input.GetKeyDown("8")) {
+            playerAnswer.Add("G");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), G, 0));
+            notes[10].Play();
+        }
+        //F#
+        if (Input.GetKeyDown("9")) {
             playerAnswer.Add("F#");
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), F, 0));
             notes[9].Play();
         }
         //E
-        if (Input.GetKeyDown("9")) {
+        if (Input.GetKeyDown("0")) {
             playerAnswer.Add("E");
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), E, 0));
             notes[7].Play();
