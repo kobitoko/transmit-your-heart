@@ -116,7 +116,7 @@ public class PlayNotes : MonoBehaviour {
             }
             else if (npc.GetComponent<satelliteNotes>().currentSong == 2) {
                 SatelliteSong_3Controls();
-                if (compareAnswers(playerAnswer, satellite_2Answer) == true) {
+                if (compareAnswers(playerAnswer, satellite_3Answer) == true) {
                     npc.GetComponent<satelliteNotes>().currentSong++;
                     DestroyInstant();
                 }
