@@ -13,13 +13,14 @@ public class PlayerScript : MonoBehaviour
     Vector3Int position;
     GridScript gridScript;
     GameObject staffNotes;
+    NotesInterface notesPlay;
 
     public void Start()
     {
         staffNotes = GameObject.FindGameObjectWithTag("staff");
         originalSpeed = walkSpeed;
         staffNotes.SetActive(false);
-
+        notesPlay = GameObject.FindGameObjectWithTag("npc").GetComponent<NotesInterface>();
     }
 
     /**
@@ -49,13 +50,16 @@ public class PlayerScript : MonoBehaviour
 
     public void Update()
     {
-        // Movement
-        Vector2 inputMovement = tileDetect(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
-        inputMovement = Vector3.Normalize(inputMovement);
-        Vector3 newPosition = this.gameObject.GetComponent<Transform>().position;
-        newPosition.x += inputMovement.x * walkSpeed * Time.deltaTime;
-        newPosition.y += inputMovement.y * walkSpeed * Time.deltaTime;
-        this.gameObject.GetComponent<Transform>().position = newPosition;
+        // Movement only if not in rythm game mode.
+        if (notesPlay.canPlaySong() == false)
+        {
+            Vector2 inputMovement = tileDetect(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")));
+            inputMovement = Vector3.Normalize(inputMovement);
+            Vector3 newPosition = this.gameObject.GetComponent<Transform>().position;
+            newPosition.x += inputMovement.x * walkSpeed * Time.deltaTime;
+            newPosition.y += inputMovement.y * walkSpeed * Time.deltaTime;
+            this.gameObject.GetComponent<Transform>().position = newPosition;
+        }
         // Action
         if (Input.GetButtonDown("Action") && closestFriendPart != null)
         {
@@ -70,9 +74,12 @@ public class PlayerScript : MonoBehaviour
         }
     }
 
+    /**
+     * begin is true if you start the song/rythm game, and false if you just end it.
+     */
     NotesInterface beginRythmGame(bool begin)
     {
-        NotesInterface notesPlay = GameObject.FindGameObjectWithTag("npc").GetComponent<NotesInterface>();
+        
         staffNotes.SetActive(begin);
         if (begin == true)
         {
