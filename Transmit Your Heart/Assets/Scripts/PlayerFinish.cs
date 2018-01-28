@@ -87,6 +87,8 @@ public class PlayerFinish : MonoBehaviour
         yield return new WaitForSeconds(4);
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GameState>().fadeSpeed = 0.5f;
         GameObject.FindGameObjectWithTag("GameController").GetComponent<GameState>().fadeOut();
+        yield return new WaitForSeconds(2);
+        GameObject.Find("fin").GetComponent<FinScreen>().startAppear = true;
     }
 
     /**

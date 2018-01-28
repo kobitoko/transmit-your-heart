@@ -247,7 +247,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   interactableDistance: 1
-  fixedSprite: {fileID: 21300000, guid: 3ea21ad0f5433e44dba54bcfa5b063d6, type: 3}
+  fixedSprite: {fileID: 21300000, guid: 45a9853e949e72d4f99c6ca12428e005, type: 3}
 --- !u!212 &431713596
 SpriteRenderer:
   m_ObjectHideFlags: 0
