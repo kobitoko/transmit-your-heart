@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.UIElements;
 
 
 //It's not hard coded
@@ -29,8 +30,8 @@ public class tvNotes : MonoBehaviour, NotesInterface
     bool song_3Played = false;
     public int notesPlayed = 0;
     public int currentSong = 0;
-    public float xOffset = -5.0f;
-    public float xScale = 1.0f;
+    public float xOffset = -7.4f;
+    public float xScale = 0.9f;
     // Use this for initialization
     void Start() {
         songs = GetComponents<AudioSource>();
