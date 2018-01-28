@@ -2,24 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FriendFollow : MonoBehaviour {
+public class FriendFollow : MonoBehaviour
+{
 
     List<Vector2> footSteps = new List<Vector2>();
     bool isNear = false;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
         // I am eternal.
         DontDestroyOnLoad(gameObject);
     }
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update()
+    {
         PlayerScript player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
-        Vector3 random = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), 0f);
         if (Vector2.Distance(transform.position, player.transform.position) < Random.Range(1f, 3.5f))
         {
             isNear = true;
-        } else
+        }
+        else
         {
             isNear = false;
         }
@@ -29,8 +32,8 @@ public class FriendFollow : MonoBehaviour {
         }
         if (isNear == false)
         {
-            footSteps.Add(player.transform.position + random);
-            transform.position = Vector2.LerpUnclamped(transform.position, footSteps[0], (player.walkSpeed * 1.2f) * Time.deltaTime);
+            footSteps.Add(player.transform.position);
+            transform.position = Vector2.LerpUnclamped(transform.position, footSteps[0], (player.walkSpeed * Random.Range(0.8f, 1.3f)) * Time.deltaTime);
         }
         if (footSteps.Count > 0 && Vector2.Distance(footSteps[0], transform.position) < 0.5f)
         {
