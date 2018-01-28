@@ -81,7 +81,7 @@ public class PlayerScript : MonoBehaviour
         }
         //#if (UNITY_EDITOR)
         // Test next level skipping song.
-        if (Input.GetKeyDown(KeyCode.Z))
+        if (notesPlay.canPlaySong() == true && Input.GetKeyDown(KeyCode.Backspace))
         {
             int increase = notesPlay.getCurrentSong() + 1;
             if(increase > 4)
