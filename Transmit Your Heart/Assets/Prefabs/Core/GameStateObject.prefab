@@ -56,4 +56,5 @@ MonoBehaviour:
   effectSliderObject: {fileID: 0}
   musicVolume: 50
   effectVolume: 50
-  fadeSpeed: 1
+  fadeSpeed: 2
+  friendo: {fileID: 1890109679891228, guid: a2c86b0de8afd1443924ccae074fcf7b, type: 2}
