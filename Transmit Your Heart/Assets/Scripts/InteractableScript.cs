@@ -17,6 +17,9 @@ public class InteractableScript : MonoBehaviour {
         if(Vector2.Distance(transform.position , playerPosition)  < interactableDistance)
         {
             playInteractiveAnim();
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().closestFriendPart = gameObject;
+        } else if (GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().closestFriendPart == gameObject) {
+            GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>().closestFriendPart = null;
         }
 	}
     void playInteractiveAnim()
