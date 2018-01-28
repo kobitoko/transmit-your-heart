@@ -6,6 +6,7 @@ public class FriendoPartsScript : InteractableScript
 {
 
     SonarPingScript playerSonar;
+    public GameObject uiSlot;
 
     // Use this for initialization
     new void Start()
@@ -22,5 +23,10 @@ public class FriendoPartsScript : InteractableScript
         {
             playerSonar.gameObject.GetComponent<SonarPingScript>().changePingColor(Color.cyan);
         }
+    }
+    public void pickupItem()
+    {
+        uiSlot.GetComponent<UIInventorySlot>().gatherPart();
+        Destroy(gameObject);
     }
 }
