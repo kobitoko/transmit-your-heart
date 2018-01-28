@@ -118,7 +118,9 @@ public class PlayerScript : MonoBehaviour
         beginRythmGame(false);
         inventory += 1;
         Debug.Log("CurrentSong: " + notesPlay.getCurrentSong());
-        Destroy(closestFriendPart); // Sad ;-; it gone.
+
+        FriendoPartsScript friend = closestFriendPart.GetComponent<FriendoPartsScript>();
+        friend.pickupItem();
     }
 
     // Help fix friendo
