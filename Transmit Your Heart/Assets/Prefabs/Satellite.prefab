@@ -430,7 +430,7 @@ MonoBehaviour:
   noteClones: []
   canPlay: 0
   notesPlayed: 0
-  currentSong: 3
+  currentSong: 0
   lastSongNote: 0
   xOffset: -5
   xScale: 1
