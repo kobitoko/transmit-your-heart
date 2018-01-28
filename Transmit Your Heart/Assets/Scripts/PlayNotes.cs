@@ -13,15 +13,13 @@ public class PlayNotes : MonoBehaviour {
     public GameObject npc;
     public Transform note;
     public int numNotesPlayed = 0;
-    public List<float> notesPlayed = new List<float>();
-    public bool rightSong = false;
 
     public List<string> radio_1Answer = new List<string> { "D", "G", "B", "D", "G", "F#", "E", "D" };
     public List<string> radio_2Answer = new List<string> { "E", "D", "C", "D", "G", "A" };
     public List<string> radio_3Answer = new List<string> { "E", "F#", "G", "C", "B", "G"};
     public List<string> radio_4Answer = new List<string> { "D", "G", "B", "D", "G", "F#", "E", "D", "E", "D", "C", "D", "G", "A", "E", "F#", "G", "C", "B", "G" };
 
-    public List<string> tv_1Answer = new List<string> { "D", "G", "B", "D", "G" };
+    public List<string> tv_1Answer = new List<string> { "D", "lG", "lB", "D", "G" };
     public List<string> tv_2Answer = new List<string> { "C", "D", "E", "F", "G" };
     public List<string> tv_3Answer = new List<string> { "G", "A", "B", "A", "G", "A", "G" };
     public List<string> tv_4Answer = new List<string> { "D", "G", "B", "D", "G", "C", "D", "E", "F", "G", "G", "A", "B", "A", "G", "A", "G" };
@@ -47,43 +45,77 @@ public class PlayNotes : MonoBehaviour {
         if(SceneManager.GetActiveScene().name == "Level1") {
             if(npc.GetComponent<tvNotes>().currentSong == 0) {
                 TVSong_1Controls();
-            }else if(npc.GetComponent<tvNotes>().currentSong == 1) {
+                if(compareAnswers(playerAnswer, tv_1Answer) == true) {
+                    npc.GetComponent<tvNotes>().currentSong++;
+                    DestroyInstant();
+                }
+            }
+            else if(npc.GetComponent<tvNotes>().currentSong == 1) {
                 TVSong_2Controls();
+                if (compareAnswers(playerAnswer, tv_2Answer) == true) {
+                    npc.GetComponent<tvNotes>().currentSong++;
+                    DestroyInstant();
+                }
             }
             else if(npc.GetComponent<tvNotes>().currentSong == 2) {
                 TVSong_3Controls();
+                if (compareAnswers(playerAnswer, tv_3Answer) == true) {
+                    npc.GetComponent<tvNotes>().currentSong++;
+                    DestroyInstant();
+                }
             }
         }else if(SceneManager.GetActiveScene().name == "Level2") {
-            if (npc.GetComponent<tvNotes>().currentSong == 0) {
+            if (npc.GetComponent<radioNotes>().currentSong == 0) {
                 RadioSong_1Controls();
+                if (compareAnswers(playerAnswer, radio_1Answer) == true) {
+                    npc.GetComponent<radioNotes>().currentSong++;
+                    DestroyInstant();
+                }
+
             }
-            else if (npc.GetComponent<tvNotes>().currentSong == 1) {
+            else if (npc.GetComponent<radioNotes>().currentSong == 1) {
                 RadioSong_2Controls();
+                if (compareAnswers(playerAnswer, radio_2Answer) == true) {
+                    npc.GetComponent<radioNotes>().currentSong++;
+                    DestroyInstant();
+                }
             }
-            else if (npc.GetComponent<tvNotes>().currentSong == 2) {
+            else if (npc.GetComponent<radioNotes>().currentSong == 2) {
                 RadioSong_3Controls();
+                if (compareAnswers(playerAnswer, radio_3Answer) == true) {
+                    npc.GetComponent<radioNotes>().currentSong++;
+                    DestroyInstant();
+                }
             }
         }
         else if(SceneManager.GetActiveScene().name == "Level3") {
-            if (npc.GetComponent<tvNotes>().currentSong == 0) {
+            if (npc.GetComponent<satelliteNotes>().currentSong == 0) {
                 SatelliteSong_1Controls();
+                if (compareAnswers(playerAnswer, satellite_1Answer) == true) {
+                    npc.GetComponent<satelliteNotes>().currentSong++;
+                    DestroyInstant();
+                }
             }
-            else if (npc.GetComponent<tvNotes>().currentSong == 1) {
+            else if (npc.GetComponent<satelliteNotes>().currentSong == 1) {
                 SatelliteSong_2Controls();
+                if (compareAnswers(playerAnswer, satellite_2Answer) == true) {
+                    npc.GetComponent<satelliteNotes>().currentSong++;
+                    DestroyInstant();
+                }
             }
-            else if (npc.GetComponent<tvNotes>().currentSong == 2) {
+            else if (npc.GetComponent<satelliteNotes>().currentSong == 2) {
                 SatelliteSong_3Controls();
+                if (compareAnswers(playerAnswer, satellite_2Answer) == true) {
+                    npc.GetComponent<satelliteNotes>().currentSong++;
+                    DestroyInstant();
+                }
             }
         }
     }
 
-    void DisplayNote(Vector3 position, List<string> currentAnswer) {
+    void DisplayNote(Vector3 position) {
         if (numNotesPlayed < 15) {
             Instantiate(note, position, Quaternion.identity);
-            notesPlayed.Add(position.y);
-            if (compareSongs(playerAnswer, currentAnswer) == true) {
-                Debug.Log("TRUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
-            }
             if (numNotesPlayed == 0) {
                 StartCoroutine(DestroyNotes());
             }
@@ -97,20 +129,27 @@ public class PlayNotes : MonoBehaviour {
         for (int i = 0; i < numNotesPlayed; i++) {
             Destroy(noteClones[i]);
         }
-        Debug.Log(rightSong);
-        notesPlayed.Clear();
+        playerAnswer.Clear();
         numNotesPlayed = 0;
     }
-
-    public bool compareSongs(List<string> list1, List<string> list2) {
+    void DestroyInstant() {
+        for (int i = 0; i < numNotesPlayed; i++) {
+            Destroy(noteClones[i]);
+        }
+        playerAnswer.Clear();
+        numNotesPlayed = 0;
+    }
+    public bool compareAnswers(List<string> list1, List<string> list2) {
         if(list1.Count != list2.Count) {
             return false;
         }
-
-        for(int i = 0; i < list1.Count; i++)
-            if(list1[i] != list2[i]) {
+    
+        for (int i = 0; i < list1.Count; i++) {
+            if (list1[i] != list2[i]) {
                 return false;
             }
+        }
+
         return true;
     }
 
@@ -120,32 +159,33 @@ public class PlayNotes : MonoBehaviour {
 
         //D
         if (Input.GetKeyDown("1")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), radio_1Answer);
             playerAnswer.Add("D");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[5].Play();
+            
         }
         //G
         if (Input.GetKeyDown("2")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), radio_1Answer);
             playerAnswer.Add("G");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[10].Play();
         }
         //B
         if (Input.GetKeyDown("3")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), radio_1Answer);
             playerAnswer.Add("B");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[14].Play();
         }
         //F#
         if (Input.GetKeyDown("8")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), radio_1Answer);
             playerAnswer.Add("F#");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[9].Play();
         }
         //E
         if (Input.GetKeyDown("9")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), radio_1Answer);
             playerAnswer.Add("E");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[7].Play();
         }
     }
@@ -153,32 +193,32 @@ public class PlayNotes : MonoBehaviour {
     void RadioSong_2Controls() {
         //E
         if (Input.GetKeyDown("1")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), radio_2Answer);
             playerAnswer.Add("E");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[7].Play();
         }
         //D
         if (Input.GetKeyDown("2")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), radio_2Answer);
             playerAnswer.Add("D");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[5].Play();
         }
         //C
         if (Input.GetKeyDown("3")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), radio_2Answer);
             playerAnswer.Add("C");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[3].Play();
         }
         //G
         if (Input.GetKeyDown("8")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), radio_2Answer);
             playerAnswer.Add("G");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[10].Play();
         }
         //A
         if (Input.GetKeyDown("9")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), radio_2Answer);
             playerAnswer.Add("A");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[12].Play();
         }
 
@@ -186,32 +226,32 @@ public class PlayNotes : MonoBehaviour {
     void RadioSong_3Controls() {
         //E
         if (Input.GetKeyDown("1")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), radio_3Answer);
             playerAnswer.Add("E");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[7].Play();
         }
         //F#
         if (Input.GetKeyDown("2")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), radio_3Answer);
             playerAnswer.Add("F#");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[9].Play();
         }
         //G
         if (Input.GetKeyDown("3")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), radio_3Answer);
             playerAnswer.Add("G");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[10].Play();
         }
         //C
         if (Input.GetKeyDown("8")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), radio_3Answer);
             playerAnswer.Add("C");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[3].Play();
         }
         //B
         if (Input.GetKeyDown("9")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), radio_3Answer);
             playerAnswer.Add("B");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[14].Play();
         }
 
@@ -220,53 +260,60 @@ public class PlayNotes : MonoBehaviour {
     void TVSong_1Controls() {
         //D
         if (Input.GetKeyDown("1")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), tv_1Answer);
-            playerAnswer.Add("D");
             notes[5].Play();
+            playerAnswer.Add("D");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
+        }
+        //lG
+        if (Input.GetKeyDown("2")) {
+            notes[0].Play();
+            playerAnswer.Add("lG");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
+        }
+        //lB
+        if (Input.GetKeyDown("3")) {
+            notes[2].Play();
+            playerAnswer.Add("lB");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
+            
         }
         //G
-        if (Input.GetKeyDown("2")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), tv_1Answer);
-            playerAnswer.Add("G");
+        if (Input.GetKeyDown("8")) {
             notes[10].Play();
-        }
-        //B
-        if (Input.GetKeyDown("3")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), tv_1Answer);
-            playerAnswer.Add("B");
-            notes[14].Play();
+            playerAnswer.Add("G");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
         }
 
     }
     void TVSong_2Controls() {
         //C
         if (Input.GetKeyDown("1")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), tv_2Answer);
             playerAnswer.Add("C");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[3].Play();
         }
         //D
         if (Input.GetKeyDown("2")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), tv_2Answer);
             playerAnswer.Add("D");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[14].Play();
         }
         //E
         if (Input.GetKeyDown("3")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), tv_2Answer);
             playerAnswer.Add("E");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[7].Play();
         }
         //F
         if (Input.GetKeyDown("8")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), tv_2Answer);
             playerAnswer.Add("F");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[8].Play();
         }
         //G
         if (Input.GetKeyDown("9")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), tv_2Answer);
             playerAnswer.Add("G");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[10].Play();
         }
 
@@ -274,64 +321,64 @@ public class PlayNotes : MonoBehaviour {
     void TVSong_3Controls() {
         //G
         if (Input.GetKeyDown("1")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), tv_3Answer);
             playerAnswer.Add("G");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[10].Play();
         }
         //A
         if (Input.GetKeyDown("2")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), tv_3Answer);
             playerAnswer.Add("A");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[12].Play();
         }
         //B
         if (Input.GetKeyDown("3")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), tv_3Answer);
             playerAnswer.Add("B");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[14].Play();
         }
         //C
         if (Input.GetKeyDown("8")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), tv_3Answer);
             playerAnswer.Add("C");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[3].Play();
         }
     }
     void SatelliteSong_1Controls() {
         //G
         if (Input.GetKeyDown("1")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), satellite_1Answer);
             playerAnswer.Add("G");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[10].Play();
         }
         //lG
         if (Input.GetKeyDown("2")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), satellite_1Answer);
             playerAnswer.Add("lG");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[0].Play();
         }
         //B
         if (Input.GetKeyDown("3")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), satellite_1Answer);
             playerAnswer.Add("B");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[14].Play();
         }
         //D
         if (Input.GetKeyDown("8")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), satellite_1Answer);
             playerAnswer.Add("D");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[5].Play();
         }
         //E
         if (Input.GetKeyDown("9")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), satellite_1Answer);
             playerAnswer.Add("E");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[7].Play();
         }
         //F
         if (Input.GetKeyDown("0")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), satellite_1Answer);
             playerAnswer.Add("F");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[8].Play();
         }
 
@@ -339,26 +386,26 @@ public class PlayNotes : MonoBehaviour {
     void SatelliteSong_2Controls() {
         //E
         if (Input.GetKeyDown("1")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), satellite_2Answer);
             playerAnswer.Add("E");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[7].Play();
         }
         //D
         if (Input.GetKeyDown("2")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), satellite_2Answer);
             playerAnswer.Add("D");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[5].Play();
         }
         //C
         if (Input.GetKeyDown("3")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), satellite_2Answer);
             playerAnswer.Add("C");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[3].Play();
         }
         //F
         if (Input.GetKeyDown("8")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), satellite_2Answer);
             playerAnswer.Add("F");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[8].Play();
         }
 
@@ -366,20 +413,20 @@ public class PlayNotes : MonoBehaviour {
     void SatelliteSong_3Controls() {
         //hC
         if (Input.GetKeyDown("1")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), satellite_3Answer);
             playerAnswer.Add("hC");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[15].Play();
         }
         //B
         if (Input.GetKeyDown("2")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), satellite_3Answer);
             playerAnswer.Add("B");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[14].Play();
         }
         //lG
         if (Input.GetKeyDown("3")) {
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0), satellite_3Answer);
             playerAnswer.Add("lG");
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
             notes[0].Play();
         }
     }
