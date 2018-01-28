@@ -12,12 +12,11 @@ public class FriendFollow : MonoBehaviour {
         // I am eternal.
         DontDestroyOnLoad(gameObject);
     }
-	
 	// Update is called once per frame
 	void Update () {
         PlayerScript player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
-        Vector3 random = new Vector3(Random.Range(-1.5f, 1.5f), Random.Range(-1f, 1f), 0f);
-        if (Vector2.Distance(transform.position, player.transform.position) < Random.Range(1f, 3f))
+        Vector3 random = new Vector3(Random.Range(-0.5f, 0.5f), Random.Range(-0.5f, 0.5f), 0f);
+        if (Vector2.Distance(transform.position, player.transform.position) < Random.Range(1f, 3.5f))
         {
             isNear = true;
         } else
