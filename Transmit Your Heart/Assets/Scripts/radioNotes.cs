@@ -27,6 +27,7 @@ public class radioNotes : MonoBehaviour {
     public int notesPlayed = 0;
     public int currentSong = 0;
     public int lastSongNote = 0;
+    public float xOffset = -5.0f;
     public float xScale = 1.0f;
     // Use this for initialization
     void Start () {
