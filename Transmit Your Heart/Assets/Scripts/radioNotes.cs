@@ -27,6 +27,7 @@ public class radioNotes : MonoBehaviour {
     public int notesPlayed = 0;
     public int currentSong = 0;
     public int lastSongNote = 0;
+    public float xScale = 1.0f;
     // Use this for initialization
     void Start () {
         songs = GetComponents<AudioSource>();
@@ -52,28 +53,28 @@ public class radioNotes : MonoBehaviour {
 
     IEnumerator DisplaySong1(List<float> song) {
         if (notesPlayed < 8) {
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
             yield return new WaitForSeconds(0.75f);
             notesPlayed++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
             yield return new WaitForSeconds(1.0f);
             notesPlayed++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
             yield return new WaitForSeconds(1.0f);
             notesPlayed++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
             yield return new WaitForSeconds(1.0f);
             notesPlayed++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
             yield return new WaitForSeconds(1.0f);
             notesPlayed++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
             yield return new WaitForSeconds(0.65f);
             notesPlayed++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
             yield return new WaitForSeconds(0.65f);
             notesPlayed++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
             yield return new WaitForSeconds(0.65f);
             notesPlayed++;
             
@@ -83,22 +84,22 @@ public class radioNotes : MonoBehaviour {
 
     IEnumerator DisplaySong2(List<float> song) {
         if (notesPlayed < 6) {
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
             yield return new WaitForSeconds(0.75f);
             notesPlayed++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
             yield return new WaitForSeconds(0.5f);
             notesPlayed++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
             yield return new WaitForSeconds(0.5f);
             notesPlayed++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
             yield return new WaitForSeconds(1.0f);
             notesPlayed++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
             yield return new WaitForSeconds(1.0f);
             notesPlayed++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
             yield return new WaitForSeconds(1.0f);
             notesPlayed++;
             
@@ -108,22 +109,22 @@ public class radioNotes : MonoBehaviour {
 
     IEnumerator DisplaySong3(List<float> song) {
         if (notesPlayed < 6) {
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
             yield return new WaitForSeconds(0.75f);
             notesPlayed++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
             yield return new WaitForSeconds(0.5f);
             notesPlayed++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
             yield return new WaitForSeconds(0.5f);
             notesPlayed++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
             yield return new WaitForSeconds(1.0f);
             notesPlayed++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
             yield return new WaitForSeconds(1.0f);
             notesPlayed++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
             yield return new WaitForSeconds(1.0f);
             notesPlayed++;
             
@@ -133,35 +134,35 @@ public class radioNotes : MonoBehaviour {
 
     IEnumerator DisplaySong4(List<float> song) {
         if (notesPlayed < 20) {
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
             yield return new WaitForSeconds(0.75f);
             notesPlayed++;
             lastSongNote++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
             yield return new WaitForSeconds(1.0f);
             notesPlayed++;
             lastSongNote++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
             yield return new WaitForSeconds(1.0f);
             notesPlayed++;
             lastSongNote++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
             yield return new WaitForSeconds(1.0f);
             notesPlayed++;
             lastSongNote++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
             yield return new WaitForSeconds(1.0f);
             notesPlayed++;
             lastSongNote++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
             yield return new WaitForSeconds(0.65f);
             notesPlayed++;
             lastSongNote++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
             yield return new WaitForSeconds(0.65f);
             notesPlayed++;
             lastSongNote++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
             yield return new WaitForSeconds(2.0f);
             notesPlayed++;
             lastSongNote++;
@@ -170,27 +171,27 @@ public class radioNotes : MonoBehaviour {
         }
 
         if (notesPlayed < 20) {
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
             yield return new WaitForSeconds(0.75f);
             notesPlayed++;
             lastSongNote++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
             yield return new WaitForSeconds(0.5f);
             notesPlayed++;
             lastSongNote++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
             yield return new WaitForSeconds(0.5f);
             notesPlayed++;
             lastSongNote++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
             yield return new WaitForSeconds(1.0f);
             notesPlayed++;
             lastSongNote++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
             yield return new WaitForSeconds(1.0f);
             notesPlayed++;
             lastSongNote++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
             yield return new WaitForSeconds(4.0f);
             notesPlayed++;
             lastSongNote++;
@@ -199,27 +200,27 @@ public class radioNotes : MonoBehaviour {
         }
 
         if (notesPlayed < 20) {
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
             yield return new WaitForSeconds(0.75f);
             notesPlayed++;
             lastSongNote++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
             yield return new WaitForSeconds(0.5f);
             notesPlayed++;
             lastSongNote++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
             yield return new WaitForSeconds(0.5f);
             notesPlayed++;
             lastSongNote++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
             yield return new WaitForSeconds(1.0f);
             notesPlayed++;
             lastSongNote++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
             yield return new WaitForSeconds(1.0f);
             notesPlayed++;
             lastSongNote++;
-            Instantiate(note, new Vector3(-9f + (1.25f * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
+            Instantiate(note, new Vector3(-9f + (xScale * notesPlayed), song[lastSongNote], 0), Quaternion.identity);
             yield return new WaitForSeconds(1.0f);
             notesPlayed++;
             lastSongNote++;
