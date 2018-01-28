@@ -16,7 +16,7 @@ public class PlayNotes : MonoBehaviour {
     public int numNotesPlayed = 0;
     public GameObject UISoundEffectslider;
 
-    public List<string> radio_1Answer = new List<string> { "D", "lG", "lb", "D", "G", "F#", "E", "D"};
+    public List<string> radio_1Answer = new List<string> { "D", "lG", "lB", "D", "G", "F#", "E", "D"};
     public List<string> radio_2Answer = new List<string> { "E", "D", "C", "D", "lG", "lA" };
     public List<string> radio_3Answer = new List<string> { "E", "F#", "G", "hC", "B", "G"};
 
@@ -191,7 +191,7 @@ public class PlayNotes : MonoBehaviour {
         if (Input.GetKeyDown("3")) {
             playerAnswer.Add("lB");
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), lB, 0));
-            notes[3].Play();
+            notes[2].Play();
         }
         //G
         if (Input.GetKeyDown("8")) {
@@ -438,7 +438,7 @@ public class PlayNotes : MonoBehaviour {
         if (Input.GetKeyDown("1")) {
             playerAnswer.Add("C");
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), C, 0));
-            notes[15].Play();
+            notes[3].Play();
         }
         //B
         if (Input.GetKeyDown("2")) {
@@ -450,7 +450,7 @@ public class PlayNotes : MonoBehaviour {
         if (Input.GetKeyDown("3")) {
             playerAnswer.Add("G");
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), G, 0));
-            notes[0].Play();
+            notes[10].Play();
         }
     }
 

@@ -124,8 +124,9 @@ public class radioNotes : MonoBehaviour, NotesInterface
             Instantiate(note, new Vector3(xOffset + (xScale * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
             yield return new WaitForSeconds(0.65f);
             notesPlayed++;
-            
-            DestroyNotes();
+
+            //DestroyNotes();
+            notesPlayed = 0;
         }
     }
 
@@ -149,8 +150,9 @@ public class radioNotes : MonoBehaviour, NotesInterface
             Instantiate(note, new Vector3(xOffset + (xScale * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
             yield return new WaitForSeconds(1.0f);
             notesPlayed++;
-            
-            DestroyNotes();
+
+            //DestroyNotes();
+            notesPlayed = 0;
         }
     }
 
@@ -174,8 +176,9 @@ public class radioNotes : MonoBehaviour, NotesInterface
             Instantiate(note, new Vector3(xOffset + (xScale * notesPlayed), song[notesPlayed], 0), Quaternion.identity);
             yield return new WaitForSeconds(1.0f);
             notesPlayed++;
-            
-            DestroyNotes();
+
+            //DestroyNotes();
+            notesPlayed = 0;
         }
     }
 

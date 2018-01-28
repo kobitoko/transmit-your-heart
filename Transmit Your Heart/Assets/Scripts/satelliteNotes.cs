@@ -125,7 +125,8 @@ public class satelliteNotes : MonoBehaviour, NotesInterface
             yield return new WaitForSeconds(1.0f);
             notesPlayed++;
 
-            DestroyNotes();
+            //DestroyNotes();
+            notesPlayed = 0;
         }
     }
 
@@ -168,7 +169,8 @@ public class satelliteNotes : MonoBehaviour, NotesInterface
             yield return new WaitForSeconds(1.0f);
             notesPlayed++;
 
-            DestroyNotes();
+            //DestroyNotes();
+            notesPlayed = 0;
         }
     }
 
@@ -185,7 +187,8 @@ public class satelliteNotes : MonoBehaviour, NotesInterface
             yield return new WaitForSeconds(1.0f);
             notesPlayed++;
 
-            DestroyNotes();
+            //DestroyNotes();
+            notesPlayed = 0;
         }
     }
 
