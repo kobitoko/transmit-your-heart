@@ -16,11 +16,11 @@ public class PlayNotes : MonoBehaviour {
     public int numNotesPlayed = 0;
     public GameObject UISoundEffectslider;
 
-    public List<string> radio_1Answer = new List<string> { "D", "G", "B", "D", "G", "F#", "E", "D" };
+    public List<string> radio_1Answer = new List<string> { "D", "D", "D", "lG", "lG", "lG", "lG", "lB", "lB", "lB", "D", "G", "F#", "E", "D" };
     public List<string> radio_2Answer = new List<string> { "E", "D", "C", "D", "G", "A" };
     public List<string> radio_3Answer = new List<string> { "E", "F#", "G", "C", "B", "G"};
 
-    public List<string> tv_1Answer = new List<string> { "D", "lG", "lB", "D", "G" };
+    public List<string> tv_1Answer = new List<string> { "D", "D", "D", "lG", "lG", "lG", "lG", "lB", "lB", "lB", "D", "D", "D", "G", "G", "G" };
     public List<string> tv_2Answer = new List<string> { "C", "D", "E", "F", "G" };
     public List<string> tv_3Answer = new List<string> { "G", "A", "B", "A", "G", "A", "G" };
 
@@ -30,8 +30,8 @@ public class PlayNotes : MonoBehaviour {
 
     public List<string> playerAnswer = new List<string>();
 
-    public float xOffset = -5.0f;
-    public float xScale = 1.0f;
+    public float xOffset = -7.4f;
+    public float xScale = 0.9f;
     // Use this for initialization
     void Start() {
         notes = GetComponents<AudioSource>();
@@ -263,13 +263,13 @@ public class PlayNotes : MonoBehaviour {
         //D
         if (Input.GetKeyDown("1")) {
             playerAnswer.Add("D");
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 3.415f, 0));
             notes[5].Play();
         }
         //lG
         if (Input.GetKeyDown("2")) {
             playerAnswer.Add("lG");
-            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
+            DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 2.95f, 0));
             notes[0].Play();
         }
         //lB

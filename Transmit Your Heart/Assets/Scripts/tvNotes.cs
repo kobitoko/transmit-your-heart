@@ -16,7 +16,7 @@ using UnityEngine.Experimental.UIElements;
 
 public class tvNotes : MonoBehaviour, NotesInterface
 {
-    public List<float> song_1 = new List<float> { -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f }; //15
+    public List<float> song_1 = new List<float> { 3.415f, 3.415f, 3.415f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f }; //15
     public List<float> song_2 = new List<float> { -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f }; //9
     public List<float> song_3 = new List<float> { -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f, -2.395f }; //14
 
