@@ -12,11 +12,14 @@ public class PlayerScript : MonoBehaviour
     float originalSpeed;
     Vector3Int position;
     GridScript gridScript;
+    GameObject staffNotes;
 
 
     public void Start()
     {
+        staffNotes = GameObject.FindGameObjectWithTag("staff");
         originalSpeed = walkSpeed;
+        staffNotes.SetActive(false);
     }
 
     /**
@@ -71,7 +74,9 @@ public class PlayerScript : MonoBehaviour
     IEnumerator pickupItemGame()
     {
         // When the currentLevel increases in the music game it means they completed it.
+        staffNotes.SetActive(true);
         yield return new WaitUntil(() => true);
+        staffNotes.SetActive(false);
         inventory += 1;
         Destroy(closestFriendPart); // Sad ;-; it gone.
     }
@@ -80,8 +85,10 @@ public class PlayerScript : MonoBehaviour
     IEnumerator fixFriend()
     {
         // CurrentLevel = 4 <- magic number for the music game. 4 = finish npc.
+        staffNotes.SetActive(true);
         yield return new WaitUntil(() => true);
         Debug.Log("For fixing me, THANK FRIEND!");
+        staffNotes.SetActive(false);
     }
 
     /**
