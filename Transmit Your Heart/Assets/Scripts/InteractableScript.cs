@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class InteractableScript : MonoBehaviour {
     public float interactableDistance = 0.75f;
-    Vector3 defaultScale;
+    public KeyItem keyItemPrefab;
+    public KeyItem.Types ItemTypeToGive;
 
 	// Use this for initialization
 	void Start () {
-        defaultScale = transform.localScale;
 	}
 	
 	// Update is called once per frame
@@ -26,4 +26,15 @@ public class InteractableScript : MonoBehaviour {
     {
         GameObject.FindGameObjectWithTag("Player").GetComponent<SonarPingScript>().playPing();
     }
+
+    public KeyItem giveItem()
+    {
+        GameObject keyItem = Instantiate(keyItemPrefab.gameObject);
+        // Hide item.
+        Vector2 hiddenPosition = Camera.main.transform.position;
+        hiddenPosition.y -= Camera.main.GetComponent<Camera>().orthographicSize + 2;
+        keyItem.transform.position = hiddenPosition;
+        return keyItem.GetComponent<KeyItem>();
+    }
+
 }
