@@ -45,7 +45,7 @@ public class PlayNotes : MonoBehaviour {
     // Update is called once per frame
     void Update() {
         if(SceneManager.GetActiveScene().name == "Level1") {
-            if(npc.GetComponent<radioNotes>().currentSong == 0) {
+            if(npc.GetComponent<tvNotes>().currentSong == 0) {
                 RadioSong_1Controls();
             }
         }else if(SceneManager.GetActiveScene().name == "Level2") {
