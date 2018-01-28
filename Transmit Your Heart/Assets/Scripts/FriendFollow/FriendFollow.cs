@@ -17,7 +17,7 @@ public class FriendFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        PlayerScript player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerScript>();
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
         if (Vector2.Distance(transform.position, player.transform.position) < Random.Range(1f, 3.5f))
         {
             isNear = true;
@@ -33,7 +33,16 @@ public class FriendFollow : MonoBehaviour
         if (isNear == false)
         {
             footSteps.Add(player.transform.position);
-            transform.position = Vector2.LerpUnclamped(transform.position, footSteps[0], (player.walkSpeed * Random.Range(0.8f, 1.3f)) * Time.deltaTime);
+            float speed = 5f;
+            if (player.GetComponent<PlayerScript>() != null)
+            {
+                speed = player.GetComponent<PlayerScript>().walkSpeed;
+            }
+            else if (player.GetComponent<PlayerFinish>() != null)
+            {
+                speed = player.GetComponent<PlayerFinish>().walkSpeed;
+            }
+            transform.position = Vector2.LerpUnclamped(transform.position, footSteps[0], (speed * Random.Range(0.8f, 1.3f)) * Time.deltaTime);
         }
         if (footSteps.Count > 0 && Vector2.Distance(footSteps[0], transform.position) < 0.5f)
         {
