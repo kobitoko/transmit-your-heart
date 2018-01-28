@@ -53,6 +53,7 @@ public class PlayNotes : MonoBehaviour {
             else if(npc.GetComponent<tvNotes>().currentSong == 1) {
                 TVSong_2Controls();
                 if (compareAnswers(playerAnswer, tv_2Answer) == true) {
+                    StartCoroutine(WaitForMusic());
                     npc.GetComponent<tvNotes>().currentSong++;
                     DestroyInstant();
                 }
@@ -113,6 +114,9 @@ public class PlayNotes : MonoBehaviour {
         }
     }
 
+    IEnumerator WaitForMusic() {
+        yield return new WaitForSeconds(1);
+    }
     void DisplayNote(Vector3 position) {
         if (numNotesPlayed < 15) {
             Instantiate(note, position, Quaternion.identity);
@@ -260,28 +264,28 @@ public class PlayNotes : MonoBehaviour {
     void TVSong_1Controls() {
         //D
         if (Input.GetKeyDown("1")) {
-            notes[5].Play();
             playerAnswer.Add("D");
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
+            notes[5].Play();
         }
         //lG
         if (Input.GetKeyDown("2")) {
-            notes[0].Play();
             playerAnswer.Add("lG");
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
+            notes[0].Play();
         }
         //lB
         if (Input.GetKeyDown("3")) {
-            notes[2].Play();
             playerAnswer.Add("lB");
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
-            
+            notes[2].Play();
+
         }
         //G
         if (Input.GetKeyDown("8")) {
-            notes[10].Play();
             playerAnswer.Add("G");
             DisplayNote(new Vector3(xOffset + (xScale * numNotesPlayed), 0.83f, 0));
+            notes[10].Play();
         }
 
     }
