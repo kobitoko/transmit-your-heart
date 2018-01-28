@@ -2,21 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KeyItem : MonoBehaviour {
-    public enum Types {
-        item1,
-        item2,
-        item3
-    };
-    public string itemName = "";
+public class FriendoScript : MonoBehaviour {
+
+    public List<KeyItem.Types> itemsNeeded = new List<KeyItem.Types>(3);
 
 	// Use this for initialization
 	void Start () {
-    }
+		
+	}
 	
 	// Update is called once per frame
 	void Update () {
 		
 	}
-    
 }

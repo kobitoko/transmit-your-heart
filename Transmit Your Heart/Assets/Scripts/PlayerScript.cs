@@ -56,9 +56,15 @@ public class PlayerScript : MonoBehaviour
         // Action
         if (Input.GetButtonDown("Action") && closestFriendPart != null)
         {
-            Debug.Log("HELLO FREND " + closestFriendPart.name);
-            // Rythm game sequence here.
-            StartCoroutine(pickupItemGame());
+            if (closestFriendPart.GetComponent<InteractableScript>() != null)
+            {
+                Debug.Log("HELLO FREND " + closestFriendPart.name);
+                // Rythm game sequence here.
+                StartCoroutine(pickupItemGame());
+            } else if (closestFriendPart.GetComponent<FriendoScript>() != null)
+            {
+
+            }
         }
     }
 
