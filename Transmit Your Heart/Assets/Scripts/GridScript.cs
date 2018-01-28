@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using UnityEngine.SceneManagement;
 
 public class GridScript : MonoBehaviour
 {
     public GameObject playerObject;
     public Vector3Int playerStartPosition;
     PlayerScript playerScript;
+    PlayerFinish playerFinish;
     Grid grid;
     Tilemap tilemap;
 
@@ -15,9 +17,18 @@ public class GridScript : MonoBehaviour
     {
         grid = GetComponent<Grid>();
         tilemap = grid.GetComponentInChildren<Tilemap>();
-        playerScript = playerObject.GetComponent<PlayerScript>();
-        playerScript.setGridScript(this);
-        playerScript.setPosition(playerStartPosition);
+        if (SceneManager.GetActiveScene().name == "Level4")
+        {
+            playerFinish = playerObject.GetComponent<PlayerFinish>();
+            playerFinish.setGridScript(this);
+            playerFinish.setPosition(playerStartPosition);
+        }
+        else
+        {
+            playerScript = playerObject.GetComponent<PlayerScript>();
+            playerScript.setGridScript(this);
+            playerScript.setPosition(playerStartPosition);
+        }
     }
 
     //gives the position of the center of the tile

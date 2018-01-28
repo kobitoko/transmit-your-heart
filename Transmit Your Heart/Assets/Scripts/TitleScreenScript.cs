@@ -14,7 +14,12 @@ public class TitleScreenScript : MonoBehaviour {
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.Space))
         {
-            SceneManager.LoadScene("Level1", LoadSceneMode.Single);
+            startGame();
         }
 	}
+    
+    public void startGame()
+    {
+        SceneManager.LoadScene("Level1", LoadSceneMode.Single);
+    }
 }
